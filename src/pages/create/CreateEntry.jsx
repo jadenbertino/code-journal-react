@@ -17,12 +17,18 @@ export default function CreateEntry() {
   
   async function changeImgSrc(src) {
     try {
-      const img = await loadImg(src)
+      const img = await loadImg(src) // throws error if invalid url
+      // valid img url => change to it
       setImgSrc(img.src)
     } catch {
       // invalid img url => default to placeholder value
       setImgSrc('./placeholder.jpg')
     }
+  }
+
+  async function handleSubmit(e) {
+    e.preventDefault()
+
   }
 
   return (
@@ -35,7 +41,7 @@ export default function CreateEntry() {
               VIEW ENTRIES
             </button>
           </div>
-          <form id="new-entry-form">
+          <form id="new-entry-form" onSubmit={handleSubmit}>
             <div className="col-half img-wrapper">
               <img
                 id="new-entry-img"
