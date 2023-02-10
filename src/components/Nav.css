@@ -6,14 +6,20 @@ nav {
 nav .container {
   height: 60px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
-nav span {
+nav h3 {
   font-size: 24px;
 }
 
-nav button {
+nav .title {
+  display: flex;
+  align-items: center;
+}
+
+nav .title .btn {
   margin-left: 16px;
   font-size: 16px;
 }
