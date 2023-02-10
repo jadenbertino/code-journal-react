@@ -1,10 +1,15 @@
 import { useState } from 'react';
+import { collection, addDoc, serverTimestamp } from "firebase/firestore"
+import { db } from '../../firebase/init'
 
 // styles & assets
 import './CreateEntry.css';
 
 export default function CreateEntry() {
-  const [imgSrc, setImgSrc] = useState('/placeholder.jpg')
+  const [entryTitle, setEntryTitle] = useState('')
+  const [entryNotes, setEntryNotes] = useState('')
+  const [imgSrc, setImgSrc] = useState('')
+  const [previewImgSrc, setPreviewImgSrc] = useState('')
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -15,20 +20,40 @@ export default function CreateEntry() {
     });
   }
   
-  async function changeImgSrc(src) {
+  async function showPreviewImg(src) {
+    setImgSrc(src)
     try {
       const img = await loadImg(src) // throws error if invalid url
       // valid img url => change to it
-      setImgSrc(img.src)
+      setPreviewImgSrc(img.src)
     } catch {
       // invalid img url => default to placeholder value
-      setImgSrc('./placeholder.jpg')
+      setPreviewImgSrc('/placeholder.jpg')
     }
+  }
+
+  function resetFields() {
+    setEntryNotes('')
+    setEntryTitle('')
+    setImgSrc('')
+    setPreviewImgSrc('/placeholder.jpg')
+  }
+
+  async function createEntry() {
+    const newEntry = {
+      title: entryTitle,
+      notes: entryNotes,
+      imgSrc,
+      uid: null
+      // id not necessary because firebase auto assigns it
+    }
+    await addDoc(collection(db, "entries"), newEntry)
+    resetFields()
   }
 
   async function handleSubmit(e) {
     e.preventDefault()
-
+    await createEntry()
   }
 
   return (
@@ -45,14 +70,20 @@ export default function CreateEntry() {
             <div className="col-half img-wrapper">
               <img
                 id="new-entry-img"
-                src={imgSrc}
-                alt="placeholder image"
+                src={previewImgSrc}
+                alt="placeholder"
               />
             </div>
             <div className="col-half text-wrapper">
               <label>
                 <span>Title</span>
-                <input type="text" name="title" id="new-entry-title" required />
+                <input 
+                  type="text"
+                  name="title"
+                  id="new-entry-title"
+                  onChange={(e) => setEntryTitle(e.target.value)}
+                  value={entryTitle}
+                  required />
               </label>
               <label>
                 <span>Photo URL</span>
@@ -60,14 +91,21 @@ export default function CreateEntry() {
                   type="text"
                   name="photoURL"
                   id="new-entry-photoURL"
-                  onChange={(e) => changeImgSrc(e.target.value)}
+                  onChange={(e) => showPreviewImg(e.target.value)}
+                  value={imgSrc}
                   required
                 />
               </label>
             </div>
             <label className="col-full">
               <span>Notes</span>
-              <textarea name="notes" id="new-entry-notes" required></textarea>
+              <textarea
+                name="notes"
+                id="new-entry-notes"
+                onChange={(e) => setEntryNotes(e.target.value)}
+                value={entryNotes}
+                required
+              ></textarea>
             </label>
             <div className="btns-wrapper col-full">
               <button className="btn">SAVE</button>
