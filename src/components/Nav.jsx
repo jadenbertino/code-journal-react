@@ -1,3 +1,6 @@
+import {useAuthContext} from '../hooks/useAuthContext'
+
+// styles
 import "./Nav.css";
 
 export default function Nav() {
