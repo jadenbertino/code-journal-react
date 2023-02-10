@@ -9,7 +9,7 @@ export default function CreateEntry() {
   const [entryTitle, setEntryTitle] = useState('')
   const [entryNotes, setEntryNotes] = useState('')
   const [imgSrc, setImgSrc] = useState('')
-  const [previewImgSrc, setPreviewImgSrc] = useState('')
+  const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg')
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
