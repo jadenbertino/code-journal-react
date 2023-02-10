@@ -1,18 +1,28 @@
 import { useState } from 'react'
+import { useSignUp } from '../../hooks/useSignUp'
 
 // styles
 import './SignUp.css'
 
 export default function SignUp() {
+  const { error, pending, signup } = useSignUp()
+
+  // form controls
   const [displayName, setDisplayName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  
+  async function handleSubmit(e) {
+    e.preventDefault()
+    signup(displayName, email, password)
+    e.target.reset()
+  }
 
   return (
     <main>
       <div className="container sign-up">
         <div className="row">
-          <form id="sign-up-form">
+          <form id="sign-up-form" onSubmit={handleSubmit}>
             <label>
               <span>First Name</span>
               <input
