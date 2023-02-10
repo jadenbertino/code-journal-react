@@ -1,0 +1,19 @@
+nav {
+  background: #562B81;
+  color: white;
+}
+
+nav .container {
+  height: 60px;
+  display: flex;
+  align-items: center;
+}
+
+nav span {
+  font-size: 24px;
+}
+
+nav button {
+  margin-left: 16px;
+  font-size: 16px;
+}
