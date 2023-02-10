@@ -9,25 +9,17 @@
   flex-wrap: wrap;
 }
 
-.new-entry label {
-  display: flex;
-  flex-direction: column;
-}
-
-.new-entry .form-header,
 .new-entry .img-wrapper {
   margin-top: 16px;
-}
-
-.new-entry label,
-.new-entry .btns-wrapper {
-  margin-top: 24px;
-}
-
-.new-entry .img-wrapper {
   height: 250px;
   border-radius: 8px;
   overflow: hidden;
+}
+
+.new-entry label {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
 }
 
 .new-entry span {
@@ -45,28 +37,21 @@
   background: transparent;
 }
 
-.new-entry input:focus,
-.new-entry textarea:focus {
-  outline: solid 1px #562B81;
-}
-
 .new-entry textarea {
   min-height: 120px;
   resize: vertical; /* by default can also resize horizontally, this disables it */
 }
 
+.new-entry input:focus,
+.new-entry textarea:focus {
+  outline: solid 1px #562B81;
+}
+
 .new-entry .btns-wrapper {
+  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
-}
-
-.delete-entry-btn {
-  background: transparent;
-  color: #DC2626;
-  text-decoration: underline;
-  border: none;
-  font-size: 14px;
 }
 
 /*
@@ -76,16 +61,16 @@
 */
 
 @media (min-width: 992px) {
-  .new-entry .form-wrapper {
-    display: flex;
-  }
 
-  .new-entry .form-wrapper .img-wrapper {
-    margin-right: 12px;
+  .new-entry .img-wrapper {
     height: 348px;
   }
 
-  .new-entry .form-wrapper .col-half:nth-child(2) {
+  .new-entry .col-half:nth-child(1) {
+    margin-right: 12px;
+  }
+
+  .new-entry .col-half:nth-child(2) {
     margin-left: 12px;
   }
 

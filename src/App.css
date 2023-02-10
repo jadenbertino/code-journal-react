@@ -50,6 +50,10 @@ img {
   padding: 0 1.5rem;
 }
 
+.row {
+  padding: 16px 0;
+}
+
 .col-full,
 .col-half {
   width: 100%;

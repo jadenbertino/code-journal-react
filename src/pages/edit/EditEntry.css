@@ -39,6 +39,12 @@
   font-size: 16px;
 }
 
+/*
+
+    BUTTONS
+
+*/
+
 .cancel-delete-btn {
   background: #b6b6b6;
   color: #292929
@@ -46,4 +52,12 @@
 
 .confirm-delete-btn {
   background: #DC2626;
+}
+
+.delete-entry-btn {
+  background: transparent;
+  color: #DC2626;
+  text-decoration: underline;
+  border: none;
+  font-size: 14px;
 }

@@ -5,7 +5,7 @@ export default function CreateEntry() {
   return (
     <main>
       <div className="container">
-        <div className="new-entry">
+        <div className="row new-entry">
           <div className="form-header">
             <h1>New Entry</h1>
             <button className="btn" id="view-entries-btn">
@@ -13,7 +13,7 @@ export default function CreateEntry() {
             </button>
           </div>
           <form id="new-entry-form">
-            <div className="col-half">
+            <div className="col-half img-wrapper">
               <img
                 id="new-entry-img"
                 src={placeholder}
