@@ -7,8 +7,7 @@ import "./Nav.css";
 
 export default function Nav() {
   const { logout } = useLogOut()
-  const user = useAuthContext()
-  console.log(user)
+  const {user} = useAuthContext()
 
   return (
     <nav>
@@ -18,13 +17,18 @@ export default function Nav() {
           <button className="btn">Entries</button>
         </div>
         <div className="auth">
-          <Link to="/signup">
-            <button className="btn sign-up">Sign Up</button>
-          </Link>
-          <Link to="/login">
-            <button className="btn log-in">Log In</button>
-          </Link>
-          <button className="btn sign-out" onClick={logout}>Sign Out</button>
+          {!user && (<>
+            <Link to="/signup">
+              <button className="btn sign-up">Sign Up</button>
+            </Link>
+            <Link to="/login">
+              <button className="btn log-in">Log In</button>
+            </Link>
+          </>)}
+          {user && <>
+            <span>Hello, {user.displayName}</span>
+            <button className="btn sign-out" onClick={logout}>Sign Out</button>
+          </>}
         </div>
       </div>
     </nav>
