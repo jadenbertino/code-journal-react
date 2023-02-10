@@ -20,7 +20,7 @@ export default function CreateEntry() {
                 alt="placeholder image"
               />
             </div>
-            <div className="col-half">
+            <div className="col-half text-wrapper">
               <label>
                 <span>Title</span>
                 <input type="text" name="title" id="new-entry-title" required />

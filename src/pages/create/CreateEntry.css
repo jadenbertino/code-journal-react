@@ -66,12 +66,12 @@
     height: 348px;
   }
 
-  .new-entry .col-half:nth-child(1) {
-    margin-right: 12px;
+  .new-entry .col-half.img-wrapper {
+    padding-right: 12px;
   }
 
-  .new-entry .col-half:nth-child(2) {
-    margin-left: 12px;
+  .new-entry .col-half.text-wrapper {
+    padding-left: 12px;
   }
 
   .new-entry textarea {
