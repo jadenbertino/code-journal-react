@@ -4,12 +4,11 @@
   align-items: center;
 }
 
-.new-entry,
 .new-entry form {
-  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.new-entry form,
 .new-entry label {
   display: flex;
   flex-direction: column;
