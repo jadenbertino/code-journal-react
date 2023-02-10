@@ -1,32 +1,15 @@
-import { useEffect, useState } from 'react'
-import { useSignUp } from '../../hooks/useSignUp'
-import { useAuthContext } from '../../hooks/useAuthContext'
-import { useNavigate } from 'react-router-dom'
-import { useLogIn } from '../../hooks/useLogIn'
+import { useState } from "react"
+import { useLogIn } from "../../hooks/useLogIn"
 
-// styles
-import './SignUp.css'
+// styles come from SignUp.css
 
-export default function SignUp() {
-  const { user } = useAuthContext()
-  const { error, pending, signup } = useSignUp()
-  const nav = useNavigate()
-
-  // form controls
-  const [displayName, setDisplayName] = useState('')
+export default function LogIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  // redirect user to homepage if signed in
-  useEffect(() => {
-    if (user) nav("/")
-  }, [])
-  
+  const {error, pending, login} = useLogIn()
   async function handleSubmit(e) {
     e.preventDefault()
-    await signup(displayName, email, password)
-    e.target.reset()
-    nav("/")
+    await login(email, password)
   }
 
   return (
@@ -34,15 +17,6 @@ export default function SignUp() {
       <div className="container sign-up">
         <div className="row">
           <form id="sign-up-form" onSubmit={handleSubmit}>
-            <label>
-              <span>First Name</span>
-              <input
-                type="text"
-                required
-                onChange={(e) => setDisplayName(e.target.value)}
-                value={displayName}
-              />
-            </label>
             <label>
               <span>Email</span>
               <input

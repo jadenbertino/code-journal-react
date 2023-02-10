@@ -1,4 +1,5 @@
 import {useAuthContext} from '../hooks/useAuthContext'
+import { Link } from 'react-router-dom';
 
 // styles
 import "./Nav.css";
@@ -12,8 +13,12 @@ export default function Nav() {
           <button className="btn">Entries</button>
         </div>
         <div className="auth">
-          <button className="btn sign-up">Sign Up</button>
-          <button className="btn log-in">Log In</button>
+          <Link to="/signup">
+            <button className="btn sign-up">Sign Up</button>
+          </Link>
+          <Link to="/login">
+            <button className="btn log-in">Log In</button>
+          </Link>
           <button className="btn sign-out">Sign Out</button>
         </div>
       </div>

@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { AuthContextProvider } from './context/AuthContext';
 
 // pages
-import { CreateEntry, EditEntry, ViewEntries, SignUp } from './pages/pages'
+import { CreateEntry, EditEntry, ViewEntries, SignUp, LogIn } from './pages/pages'
 
 // components
 import { Nav } from './components/components'
@@ -21,6 +21,7 @@ function App() {
           <Route path="/create" element={<CreateEntry />} />
           <Route path="/edit/:id" element={<EditEntry />} />
           <Route path="/signup" element={<SignUp />} />
+          <Route path="/login" element={<LogIn />} />
         </Routes>
       </Router>
     </AuthContextProvider>
