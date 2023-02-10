@@ -29,6 +29,7 @@ function App() {
   return (
     <Router>
       <Nav />
+      
       <Routes>
         <Route path="/" element={<ViewEntries />}/>
         <Route path="/create" element={<CreateEntry />}/>

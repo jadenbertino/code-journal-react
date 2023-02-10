@@ -1,11 +1,34 @@
+import { useState } from 'react';
+
+// styles & assets
 import './CreateEntry.css';
-import placeholder from './placeholder.jpg';
 
 export default function CreateEntry() {
+  const [imgSrc, setImgSrc] = useState('/placeholder.jpg')
+
+  function loadImg(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+  
+  async function changeImgSrc(src) {
+    try {
+      const img = await loadImg(src)
+      setImgSrc(img.src)
+    } catch {
+      // invalid img url => default to placeholder value
+      setImgSrc('./placeholder.jpg')
+    }
+  }
+
   return (
     <main>
       <div className="container">
-        <div className="row new-entry">
+        <div className="row new-entry" data-view="new-entry">
           <div className="form-header">
             <h1>New Entry</h1>
             <button className="btn" id="view-entries-btn">
@@ -16,7 +39,7 @@ export default function CreateEntry() {
             <div className="col-half img-wrapper">
               <img
                 id="new-entry-img"
-                src={placeholder}
+                src={imgSrc}
                 alt="placeholder image"
               />
             </div>
@@ -31,6 +54,7 @@ export default function CreateEntry() {
                   type="text"
                   name="photoURL"
                   id="new-entry-photoURL"
+                  onChange={(e) => changeImgSrc(e.target.value)}
                   required
                 />
               </label>
@@ -39,9 +63,9 @@ export default function CreateEntry() {
               <span>Notes</span>
               <textarea name="notes" id="new-entry-notes" required></textarea>
             </label>
-            <div class="btns-wrapper col-full">
-              <button class="btn">SAVE</button>
-              <button class="delete-entry-btn hidden" type="button">
+            <div className="btns-wrapper col-full">
+              <button className="btn">SAVE</button>
+              <button className="delete-entry-btn hidden" type="button">
                 Delete Entry
               </button>
             </div>

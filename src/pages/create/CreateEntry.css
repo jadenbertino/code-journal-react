@@ -67,7 +67,8 @@
   }
 
   .new-entry .col-half.img-wrapper {
-    padding-right: 12px;
+    margin-right: 12px;
+    width: calc(50% - 12px)
   }
 
   .new-entry .col-half.text-wrapper {
