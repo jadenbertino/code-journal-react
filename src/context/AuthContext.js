@@ -11,7 +11,7 @@ export function AuthContextProvider({ children }) {
   // auto login on mount, then unsub listener
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      setAuthContext(user)
+      setAuthContext({user})
     })
     unsub()
   }, [])
