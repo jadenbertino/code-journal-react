@@ -6,12 +6,18 @@ export const AuthContext = createContext()
 
 export function AuthContextProvider({ children }) {
 
-  const [authContext, setAuthContext] = useState(null)
+  const [authContext, setAuthContext] = useState({
+    user: null,
+    authIsReady: false
+  })
 
   // auto login on mount, then unsub listener
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (user) => {
-      setAuthContext({user})
+      setAuthContext({
+        user,
+        authIsReady: true
+      })
     })
     unsub()
   }, [])

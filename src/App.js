@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-import { AuthContextProvider } from './context/AuthContext';
+import { useAuthContext } from './hooks/useAuthContext';
 
 // pages
 import { CreateEntry, EditEntry, ViewEntries, SignUp, LogIn } from './pages/pages'
@@ -11,10 +11,11 @@ import { Nav } from './components/components'
 import './App.css';
 
 function App() {
-  
+  const { authIsReady } = useAuthContext()
+
   return (
-    <AuthContextProvider>
-      <Router>
+    <Router>
+      {authIsReady && <>
         <Nav />
         <Routes>
           <Route path="/" element={<ViewEntries />} />
@@ -23,8 +24,8 @@ function App() {
           <Route path="/signup" element={<SignUp />} />
           <Route path="/login" element={<LogIn />} />
         </Routes>
-      </Router>
-    </AuthContextProvider>
+      </>}
+    </Router>
   );
 }
 
