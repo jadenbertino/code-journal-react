@@ -20,11 +20,11 @@ export default function Nav() {
         </div>
         <div className="auth">
           {!user && (<>
-            <Link to="/signup">
-              <button className="btn sign-up">Sign Up</button>
-            </Link>
             <Link to="/login">
               <button className="btn log-in">Log In</button>
+            </Link>
+            <Link to="/signup">
+              <button className="btn sign-up">Sign Up</button>
             </Link>
           </>)}
           {user && <>
