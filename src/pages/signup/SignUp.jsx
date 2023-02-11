@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useSignUp } from '../../hooks/useSignUp'
 import { useAuthContext } from '../../hooks/useAuthContext'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 import { useLogIn } from '../../hooks/useLogIn'
 
 // styles
@@ -31,9 +31,10 @@ export default function SignUp() {
 
   return (
     <main>
-      <div className="container sign-up">
+      <div className="container signup">
         <div className="row">
-          <form id="sign-up-form" onSubmit={handleSubmit}>
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <h1>Sign Up</h1>
             <label>
               <span>First Name</span>
               <input
@@ -62,6 +63,9 @@ export default function SignUp() {
               />
             </label>
             <button className="btn submit-btn">Submit</button>
+            <Link to="/login" className="switch-auth-link">
+              Already have an account? Click here to login.
+            </Link>
           </form>
         </div>
       </div>

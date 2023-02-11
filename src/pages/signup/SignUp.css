@@ -1,22 +1,24 @@
-.container.sign-up {
+.container.signup,
+.container.login {
   max-width: 576px !important;
   height: calc(100vh - 80px);
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-.container.sign-up .row {
-  width: 100%;
+.auth-form h1 {
+  margin-bottom: 16px;
+  text-align: center;
 }
 
-#sign-up-form {
+.auth-form {
   display: flex;
   flex-direction: column;
-  width: 100%;
   transform: translateY(-40px);
 }
 
-#sign-up-form label {
+.auth-form label {
   display: flex;
   flex-direction: column;
   margin-bottom: 4px;
@@ -25,7 +27,7 @@
   color: #562B81;
 }
 
-#sign-up-form input {
+.auth-form input {
   margin-top: 8px;
   margin-bottom: 32px;
   outline: none;
@@ -33,6 +35,11 @@
   font-size: 16px;
 }
 
-#sign-up-form .submit-btn {
+.auth-form .submit-btn {
   font-size: 20px;
+}
+
+.auth-form .switch-auth-link {
+  text-align: center;
+  margin-top: 24px;
 }

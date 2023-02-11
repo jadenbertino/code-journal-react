@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useLogIn } from "../../hooks/useLogIn"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
 
 // styles come from SignUp.css
 
@@ -19,9 +19,10 @@ export default function LogIn() {
 
   return (
     <main>
-      <div className="container sign-up">
+      <div className="container login">
         <div className="row">
-          <form id="sign-up-form" onSubmit={handleSubmit}>
+          <form className="auth-form" onSubmit={handleSubmit}>
+            <h1>Log In</h1>
             <label>
               <span>Email</span>
               <input
@@ -41,6 +42,9 @@ export default function LogIn() {
               />
             </label>
             <button className="btn submit-btn">Submit</button>
+            <Link to="/signup" className="switch-auth-link">
+              Don't have an account yet? Click here to sign up.
+            </Link>
           </form>
         </div>
       </div>

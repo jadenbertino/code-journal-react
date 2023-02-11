@@ -1,6 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { collection, addDoc, serverTimestamp } from "firebase/firestore"
 import { db } from '../../firebase/init'
+import { useAuthContext } from '../../hooks/useAuthContext';
+import { useNavigate } from 'react-router-dom';
+
+// TODO: ensure that user id is getting pushed up with the entry
 
 // styles & assets
 import './CreateEntry.css';
@@ -10,6 +14,13 @@ export default function CreateEntry() {
   const [entryNotes, setEntryNotes] = useState('')
   const [imgSrc, setImgSrc] = useState('')
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg')
+  const { user } = useAuthContext()
+
+  // redirect user if not signed in
+  const nav = useNavigate()
+  useEffect(() => {
+    if (!user) nav("/login")
+  }, [])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -44,7 +55,7 @@ export default function CreateEntry() {
       title: entryTitle,
       notes: entryNotes,
       imgSrc,
-      uid: null
+      uid: user.uid
       // id not necessary because firebase auto assigns it
     }
     await addDoc(collection(db, "entries"), newEntry)
