@@ -13,7 +13,9 @@ export default function Nav() {
     <nav>
       <div className="container">
         <div className="title">
-          <h3>Code Journal</h3>
+          <Link to="/">
+            <h3>Code Journal</h3>
+          </Link>
           <button className="btn">Entries</button>
         </div>
         <div className="auth">

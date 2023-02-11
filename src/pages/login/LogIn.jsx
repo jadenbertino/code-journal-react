@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLogIn } from "../../hooks/useLogIn"
+import { useNavigate } from "react-router-dom"
 
 // styles come from SignUp.css
 
@@ -7,9 +8,13 @@ export default function LogIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const {error, pending, login} = useLogIn()
+  const nav = useNavigate()
+
   async function handleSubmit(e) {
     e.preventDefault()
     await login(email, password)
+    e.target.reset()
+    nav("/")
   }
 
   return (

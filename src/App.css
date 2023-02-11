@@ -12,6 +12,12 @@ body {
   color: #292929;
 }
 
+a,
+a:visited {
+  text-decoration: none;
+  color: inherit;
+}
+
 input,
 textarea {
   font-family: 'Proza Libre', sans-serif;
