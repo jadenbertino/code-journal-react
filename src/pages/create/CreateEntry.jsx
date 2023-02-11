@@ -11,8 +11,11 @@ import './CreateEntry.css';
 
 export default function CreateEntry() {
   const [entryTitle, setEntryTitle] = useState('')
+  const [isValidTitle, setIsValidTitle] = useState(true)
   const [entryNotes, setEntryNotes] = useState('')
+  const [isValidNotes, setIsValidNotes] = useState(true)
   const [imgSrc, setImgSrc] = useState('')
+  const [isValidImgSrc, setIsValidImgSrc] = useState(true)
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg')
   const { user } = useAuthContext()
 
@@ -37,11 +40,31 @@ export default function CreateEntry() {
     }
   }
 
+  /*
+
+      FORM SUBMISSION LOGIC
+
+  */
+
   function resetFields() {
     setEntryNotes('')
     setEntryTitle('')
     setImgSrc('')
     setPreviewImgSrc('/placeholder.jpg')
+  }
+
+  // Form Validation Helpers
+  function checkIfCharIsAlphanumeric(char) {
+    if (typeof char !== 'string') return false;
+    if (char >= 0 && char <= 9) return true; // number
+    if (char.toLowerCase() !== char.toUpperCase()) return true; // alphabetical
+    return false; // not alphanumeric
+  }
+
+  function checkIfValidEntryInput(str) {
+    // has at least 1 alphanumeric char
+    if (typeof str !== 'string') return false;
+    return !!str.split('').filter(char => checkIfCharIsAlphanumeric(char)).length;
   }
 
   async function createEntry() {
@@ -58,7 +81,37 @@ export default function CreateEntry() {
 
   async function handleSubmit(e) {
     e.preventDefault()
-    await createEntry()
+    // check each state
+    // if valid => take away red highlight
+    // if any are invalid => highlight in red
+    // if ALL are valid => createEntry
+    let isValidEntry = true
+    
+    // Title 
+    if (checkIfValidEntryInput(entryTitle)) {
+      setIsValidTitle(true)
+    } else {
+      setIsValidTitle(false)
+      isValidEntry = false
+    }
+    
+    // Notes
+    if (checkIfValidEntryInput(entryNotes)) {
+      setIsValidNotes(true)
+    } else {
+      setIsValidNotes(false)
+      isValidEntry = false
+    }
+
+    // Img Src
+    if (previewImgSrc !== '/placeholder.jpg') {
+      setIsValidImgSrc(true)
+    } else {
+      setIsValidImgSrc(false)
+      isValidEntry = false
+    }
+
+    if (isValidEntry) await createEntry()
   }
 
   return (
@@ -82,12 +135,13 @@ export default function CreateEntry() {
             <div className="col-half text-wrapper">
               <label>
                 <span>Title</span>
-                <input 
+                <input
                   type="text"
                   name="title"
                   id="new-entry-title"
                   onChange={(e) => setEntryTitle(e.target.value)}
                   value={entryTitle}
+                  className={isValidTitle ? "" : "invalid-input"}
                   required />
               </label>
               <label>
@@ -98,6 +152,7 @@ export default function CreateEntry() {
                   id="new-entry-photoURL"
                   onChange={(e) => showPreviewImg(e.target.value)}
                   value={imgSrc}
+                  className={isValidImgSrc ? "" : "invalid-input"}
                   required
                 />
               </label>
@@ -108,6 +163,7 @@ export default function CreateEntry() {
                 name="notes"
                 id="new-entry-notes"
                 onChange={(e) => setEntryNotes(e.target.value)}
+                className={isValidNotes ? "" : "invalid-input"}
                 value={entryNotes}
                 required
               ></textarea>
