@@ -4,7 +4,7 @@ import { db } from '../../firebase/init'
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
 
-// TODO: ensure that user id is getting pushed up with the entry
+// TODO: create component that prompts user to login when they try to access locked content
 
 // styles & assets
 import './CreateEntry.css';
@@ -15,12 +15,6 @@ export default function CreateEntry() {
   const [imgSrc, setImgSrc] = useState('')
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg')
   const { user } = useAuthContext()
-
-  // redirect user if not signed in
-  const nav = useNavigate()
-  useEffect(() => {
-    if (!user) nav("/login")
-  }, [])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
