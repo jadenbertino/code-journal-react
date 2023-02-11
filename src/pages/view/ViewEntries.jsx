@@ -1,11 +1,15 @@
+import { useAuthContext } from '../../hooks/useAuthContext'
+import { AuthPrompt } from '../../components/components'
+
 // styles
 import './ViewEntries.css'
 
 export default function ViewEntries() {
-  
+  const { user } = useAuthContext()
+
   return (
-    <div>
-      ViewEntries
-    </div>
+    <main>
+      {!user && <AuthPrompt />}
+    </main>
   )
 }

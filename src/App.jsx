@@ -17,13 +17,17 @@ function App() {
     <Router>
       {authIsReady && <>
         <Nav />
-        <Routes>
-          <Route path="/" element={<ViewEntries />} />
-          <Route path="/create" element={<CreateEntry />} />
-          <Route path="/edit/:id" element={<EditEntry />} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/login" element={<LogIn />} />
-        </Routes>
+        <main>
+          <div className="container vh-100 fc">
+            <Routes>
+              <Route path="/" element={<ViewEntries />} />
+              <Route path="/create" element={<CreateEntry />} />
+              <Route path="/edit/:id" element={<EditEntry />} />
+              <Route path="/signup" element={<SignUp />} />
+              <Route path="/login" element={<LogIn />} />
+            </Routes>
+          </div>
+        </main>
       </>}
     </Router>
   );

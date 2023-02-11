@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import { useAuthContext } from '../hooks/useAuthContext';
+import { useLocation, Link } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useReferral } from '../hooks/useReferral';
 
 // styles
 import './AuthPrompt.css';
 
+// TODO: Redirect back to referral page after login / signup
+
 export default function AuthPrompt() {
+
   return (
-    <div class="auth-prompt">
-      <i class="fa-solid fa-lock"></i>
+    <div className="auth-prompt">
+      <i className="fa-solid fa-lock"></i>
       <h1>Please sign in to access this content</h1>
       <div className="btns-wrapper">
         <Link to="/login">
