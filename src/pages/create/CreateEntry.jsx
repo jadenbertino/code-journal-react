@@ -72,7 +72,8 @@ export default function CreateEntry() {
       title: entryTitle,
       notes: entryNotes,
       imgSrc,
-      uid: user.uid
+      uid: user.uid,
+      timeCreated: serverTimestamp()
       // id not necessary because firebase auto assigns it
     }
     await addDoc(collection(db, "entries"), newEntry)
