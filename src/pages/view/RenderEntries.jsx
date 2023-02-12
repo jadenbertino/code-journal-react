@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 import { useRef } from "react"
 import { useEffect, useState } from "react"
 
-export default function RenderEntries({ entries, searchQuery }) {
+export default function RenderEntries({ entries, searchQuery, resetQuery }) {
   const [queriedEntries, setQueriedEntries] = useState([...entries])
   
   function resetQuery() {
@@ -51,9 +51,12 @@ export default function RenderEntries({ entries, searchQuery }) {
       </ul> : (
         <div className="no-entries">
         <p>{`No entries${entries.length ? " match this query" : ""}`}</p>
-        <Link to="/create">
-          <button className="btn">Click Here To Create A New Entry</button>
-        </Link>
+        <div className="btns-wrapper">
+          {entries.length ? <button className="btn" onClick={resetQuery}>Reset Query</button> : null}
+          <Link to="/create">
+            <button className="btn">Create New Entry</button>
+          </Link>
+        </div>
       </div> 
       )}
     </>

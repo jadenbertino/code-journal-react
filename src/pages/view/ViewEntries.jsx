@@ -15,6 +15,7 @@ export default function ViewEntries() {
   const { user } = useAuthContext();
   const { entries, pending } = useCollection('entries', ['uid', '==', user && user.uid]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [currentSearchQuery, setCurrentSearchQuery] = useState('')
   const searchInput = useRef()
   // const [queriedEntries, setQueriedEntries] = useState([])
 
@@ -22,6 +23,11 @@ export default function ViewEntries() {
   function searchEntries(e) {
     e.preventDefault()
     setSearchQuery(searchInput.current.value)
+  }
+
+  function resetQuery() {
+    setSearchQuery('')
+    setCurrentSearchQuery('')
   }
 
   //   // queriedEntries = []
@@ -76,10 +82,12 @@ export default function ViewEntries() {
                 type="text"
                 placeholder="Search Entries..."
                 ref={searchInput}
+                onChange={(e) => setCurrentSearchQuery(e.target.value)}
+                value={currentSearchQuery}
               />
             </form>
             {pending && <p className="loading">Loading Entries...</p>}
-            {!pending && <RenderEntries entries={entries} searchQuery={searchQuery}/> }
+            {!pending && <RenderEntries entries={entries} resetQuery={resetQuery} searchQuery={searchQuery}/> }
             <div className="reset-query-btn-wrapper">
               <button className="btn reset-query-btn hidden">
                 View All Entries
