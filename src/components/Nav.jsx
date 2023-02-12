@@ -32,6 +32,7 @@ export default function Nav() {
             <button className="btn btn-sm sign-out" onClick={logout}>Sign Out</button>
           </>}
         </div>
+        <i class="fa-solid fa-bars"></i>
       </div>
     </nav>
   );

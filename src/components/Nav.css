@@ -44,6 +44,10 @@ nav .auth .greeting {
   pointer-events: none;
 }
 
+.fa-bars {
+  display: none;
+}
+
 /*
 
     MOBILE
@@ -59,5 +63,16 @@ nav .auth .greeting {
 @media screen and (max-width: 576px) {
   nav .auth .greeting {
     display: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  nav .auth {
+    display: none;
+  }
+
+  .fa-bars {
+    display: block;
+    font-size: 20px;
   }
 }

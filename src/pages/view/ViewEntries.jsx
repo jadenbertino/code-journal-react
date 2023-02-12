@@ -69,7 +69,7 @@ export default function ViewEntries() {
             <header>
               <h1>View Entries</h1>
               <Link to="/create">
-                <button className="btn">
+                <button className="btn swap-views-btn">
                   NEW ENTRY
                 </button>
               </Link>

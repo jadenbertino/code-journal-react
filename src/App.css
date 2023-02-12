@@ -70,7 +70,6 @@ img {
   padding: 0 1.5rem;
 }
 
-
 .row {
   width: 100%;
   margin: 40px 0;
@@ -110,5 +109,16 @@ header {
   }
   .col-half {
     width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    display: flex;
+    justify-content: center;
+  }
+
+  header .swap-views-btn {
+    display: none;
   }
 }

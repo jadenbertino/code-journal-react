@@ -171,7 +171,7 @@ export default function EditEntry() {
             <header>
               <h1>Edit Entry</h1>
               <Link to="/">
-                <button className="btn">
+                <button className="btn swap-views-btn">
                   CANCEL EDITS
                 </button>
               </Link>

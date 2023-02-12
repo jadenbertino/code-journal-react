@@ -134,7 +134,7 @@ export default function CreateEntry() {
             <header>
               <h1>New Entry</h1>
               <Link to="/">
-                <button className="btn">
+                <button className="btn swap-views-btn">
                   VIEW ENTRIES
                 </button>
               </Link>
