@@ -185,7 +185,6 @@ export default function EditEntry() {
                   <span>Title</span>
                   <input
                     type="text"
-                    name="title"
                     id="new-entry-title"
                     onChange={e => setEntryTitle(e.target.value)}
                     value={entryTitle}
@@ -197,7 +196,6 @@ export default function EditEntry() {
                   <span>Photo URL</span>
                   <input
                     type="text"
-                    name="photoURL"
                     id="new-entry-photoURL"
                     onChange={e => showPreviewImg(e.target.value)}
                     value={imgSrc}
@@ -209,7 +207,6 @@ export default function EditEntry() {
               <label className="col-full">
                 <span>Notes</span>
                 <textarea
-                  name="notes"
                   id="new-entry-notes"
                   onChange={e => setEntryNotes(e.target.value)}
                   className={isValidNotes ? '' : 'invalid-input'}
