@@ -13,11 +13,12 @@ export default function Nav() {
     <nav>
       <div className="container">
         <div className="title">
-          <Link to="/">
-            <h3>Code Journal</h3>
+          <h3>Code Journal</h3>
+          <Link to="/create">
+            <button className="btn">Create</button>
           </Link>
           <Link to="/">
-            <button className="btn">Entries</button>
+            <button className="btn">View</button>
           </Link>
         </div>
         <div className="auth">

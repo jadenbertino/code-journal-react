@@ -4,7 +4,7 @@ export default function ViewEntriesHeader() {
   return (
     <>
       <div className="row header">
-        <h1>Entries</h1>
+        <h1>View Entries</h1>
         <Link to="/create">
           <button className="btn" id="new-entry-btn">
             NEW ENTRY

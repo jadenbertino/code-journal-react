@@ -19,8 +19,11 @@ nav .title {
   align-items: center;
 }
 
-nav .title .btn {
-  margin-left: 16px;
+nav .title a {
+  margin-left: 24px;
+}
+
+nav .btn {
   font-size: 16px;
 }
 

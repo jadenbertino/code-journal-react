@@ -1,14 +1,13 @@
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { AuthPrompt } from '../../components/components';
 import { useCollection } from '../../hooks/useCollection';
-
+import { Link } from 'react-router-dom'
 // components
 import ViewEntriesHeader from './ViewEntriesHeader.jsx';
 import RenderEntries from './RenderEntries.jsx';
 
 // styles
 import './ViewEntries.css';
-import { useState } from 'react';
 
 export default function ViewEntries() {
   const { user } = useAuthContext();
@@ -25,7 +24,12 @@ export default function ViewEntries() {
               <p className="loading">Loading Entries...</p> :
               entries.length ?
                 <RenderEntries entries={entries} /> :
-                <p className="no-entries">No Entries</p>
+                (<div className="no-entries">
+                  <p>No Entries</p>
+                  <Link to="/create">
+                    <button className="btn">Click Here To Create A New Entry</button>
+                  </Link>
+                </div>)
             }
             <div className="reset-query-btn-wrapper">
               <button className="btn reset-query-btn hidden">
