@@ -11,9 +11,15 @@
 
 .new-entry .img-wrapper {
   margin-top: 16px;
-  height: 250px;
   border-radius: 8px;
   overflow: hidden;
+  height: 348px;
+  margin-right: 12px;
+  width: calc(50% - 12px)
+}
+
+.new-entry .text-wrapper {
+  padding-left: 12px;
 }
 
 .new-entry label {
@@ -38,7 +44,7 @@
 }
 
 .new-entry textarea {
-  min-height: 120px;
+  min-height: 200px;
   resize: vertical; /* by default can also resize horizontally, this disables it */
 }
 
@@ -64,22 +70,19 @@
 
 */
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
 
   .new-entry .img-wrapper {
-    height: 348px;
+    height: 250px;
+    width: 100%;
+    margin-right: 0;
   }
 
-  .new-entry .col-half.img-wrapper {
-    margin-right: 12px;
-    width: calc(50% - 12px)
-  }
-
-  .new-entry .col-half.text-wrapper {
-    padding-left: 12px;
+  .new-entry .text-wrapper {
+    padding-left: 0;
   }
 
   .new-entry textarea {
-    min-height: 200px;
+    min-height: 120px;
   }
 }

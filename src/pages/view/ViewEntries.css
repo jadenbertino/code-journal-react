@@ -1,3 +1,8 @@
+/*
+
+    HEADER
+
+*/
 .view-entries {
   width: 100%;
   display: flex;
@@ -17,7 +22,12 @@
   margin-bottom: 16px;
 }
 
-/* Search Box */
+/*
+
+    SEARCH
+
+*/
+
 .search {
   display: flex;
   height: 40px;
@@ -57,13 +67,11 @@
 
 .entry {
   list-style-type: none;
-  margin: 24px 0 50px;
+  margin: 40px 0;
 }
 
-.entry .title-wrapper {
+.view-entries li {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .entry .img-wrapper {
@@ -73,6 +81,24 @@
   justify-content: center;
   align-items: center;
   height: 348px;
+  width: 50%;
+  margin-right: 12px;
+}
+
+.view-entries .text-wrapper {
+  width: 50%;
+  margin-left: 12px;
+}
+
+.entry .title-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-entries .entry-title {
+  font-size: 20px;
+  margin-top: 0;
 }
 
 .entry .entry-title {
@@ -117,24 +143,19 @@
 
 */
 
-@media screen and (min-width: 992px) {
-  
+@media screen and (max-width: 992px) {
   .view-entries li {
-    display: flex;
-  }
-
-  .view-entries h3 {
-    font-size: 20px;
-    margin-top: 0;
+    flex-direction: column;
   }
   
+
   .view-entries .img-wrapper {
-    width: 50%;
-    margin-right: 12px;
+    width: 100%;
+    margin-right: 0;
   }
 
   .view-entries .text-wrapper {
-    margin-left: 12px;
-    width: 50%;
+    width: 100%;
+    padding-left: 0;
   }
 }
