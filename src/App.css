@@ -81,6 +81,12 @@ img {
   width: 50%;
 }
 
+/*
+
+    MOBILE
+
+*/
+
 @media screen and (max-width: 992px) {
   .container {
     max-width: 576px;

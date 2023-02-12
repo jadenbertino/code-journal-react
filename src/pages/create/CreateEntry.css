@@ -2,6 +2,11 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 16px;
+}
+
+#view-entries-btn {
+  padding: 12px 24px;
 }
 
 .new-entry form {
@@ -66,14 +71,14 @@
 
 /*
 
-    Desktop
+    DESKTOP
 
 */
 
 @media (max-width: 992px) {
 
   .new-entry .img-wrapper {
-    height: 250px;
+    height: 280px;
     width: 100%;
     margin-right: 0;
   }

@@ -33,3 +33,21 @@ nav .btn {
   font-weight: bold;
   margin-left: 32px;
 }
+
+/*
+
+    MOBILE
+
+*/
+
+@media screen and (max-width: 992px) {
+  nav .title .links-wrapper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav .auth .greeting {
+    display: none;
+  }
+}

@@ -14,12 +14,14 @@ export default function Nav() {
       <div className="container">
         <div className="title">
           <h3>Code Journal</h3>
-          <Link to="/create">
-            <button className="btn">Create</button>
-          </Link>
-          <Link to="/">
-            <button className="btn">View</button>
-          </Link>
+          <div className="links-wrapper">
+            <Link to="/create">
+              <button className="btn">Create</button>
+            </Link>
+            <Link to="/">
+              <button className="btn">View</button>
+            </Link>
+          </div>
         </div>
         <div className="auth">
           {!user && (<>
@@ -31,7 +33,7 @@ export default function Nav() {
             </Link>
           </>)}
           {user && <>
-            <span>Hello, {user.displayName}</span>
+            <span className="greeting">Hello, {user.displayName}</span>
             <button className="btn sign-out" onClick={logout}>Sign Out</button>
           </>}
         </div>
