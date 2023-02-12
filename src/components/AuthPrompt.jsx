@@ -1,12 +1,12 @@
 import { useAuthContext } from '../hooks/useAuthContext';
 import { useLocation, Link } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useReferral } from '../hooks/useReferral';
 
 // styles
 import './AuthPrompt.css';
 
-// TODO: Redirect back to referral page after login / signup
+// TODO: Redirect back to referral page after login / signup,
+// will probably require I switch to dispatch system
 
 export default function AuthPrompt() {
 

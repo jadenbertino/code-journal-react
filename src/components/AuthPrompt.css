@@ -8,17 +8,20 @@
 
 .auth-prompt .fa-lock {
   font-size: 40px;
-  margin-bottom: 24px;
+}
+
+.auth-prompt h1 {
+  margin: 32px 0;
 }
 
 .auth-prompt .btns-wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   width: 100%;
-  margin-top: 24px;
 }
 
 .auth-prompt .btn {
   padding: 12px 40px;
   font-size: 20px;
+  margin: 0 24px;
 }

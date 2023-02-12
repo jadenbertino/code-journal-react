@@ -39,5 +39,5 @@ export function useLogIn() {
     return () => setMounted(false)
   }, [])
 
-  return { login, error, isPending: pending }
+  return { login, error, pending }
 }

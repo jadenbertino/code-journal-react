@@ -6,8 +6,8 @@ import { useAuthContext } from "./useAuthContext";
 export function useLogOut() {
   const [error, setError] = useState(null)
   const [pending, setPending] = useState(false)
-  const { setAuthContext } = useAuthContext()
   const [mounted, setMounted] = useState(true)
+  const { setAuthContext } = useAuthContext()
 
   async function logout() {
     setError(null)
@@ -16,7 +16,7 @@ export function useLogOut() {
     try {
       // sign out user
       await signOut(auth)
-      setAuthContext(null)
+      setAuthContext((prev) => ({...prev, user: null}))
 
       // only do state updates if mounted
       if (mounted) {

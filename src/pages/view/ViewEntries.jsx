@@ -7,9 +7,12 @@ import './ViewEntries.css'
 export default function ViewEntries() {
   const { user } = useAuthContext()
 
-  return (
-    <main>
-      {!user && <AuthPrompt />}
-    </main>
-  )
+  return (<>
+    {!user && <AuthPrompt />}
+    {user && <>
+      <div className="view-entries">
+        
+      </div>
+    </>}
+  </>)
 }
