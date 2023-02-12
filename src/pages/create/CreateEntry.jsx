@@ -1,27 +1,27 @@
-import { useEffect, useState } from 'react';
-import { collection, addDoc, serverTimestamp } from "firebase/firestore"
-import { db } from '../../firebase/init'
+import { useState } from 'react';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 // TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
 
 // components
-import { AuthPrompt } from '../../components/components'
+import { AuthPrompt } from '../../components/components';
 
 // styles
 import './CreateEntry.css';
 
 export default function CreateEntry() {
-  const [entryTitle, setEntryTitle] = useState('')
-  const [isValidTitle, setIsValidTitle] = useState(true)
-  const [entryNotes, setEntryNotes] = useState('')
-  const [isValidNotes, setIsValidNotes] = useState(true)
-  const [imgSrc, setImgSrc] = useState('')
-  const [isValidImgSrc, setIsValidImgSrc] = useState(true)
-  const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg')
-  const { user } = useAuthContext()
+  const [entryTitle, setEntryTitle] = useState('');
+  const [isValidTitle, setIsValidTitle] = useState(true);
+  const [entryNotes, setEntryNotes] = useState('');
+  const [isValidNotes, setIsValidNotes] = useState(true);
+  const [imgSrc, setImgSrc] = useState('');
+  const [isValidImgSrc, setIsValidImgSrc] = useState(true);
+  const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
+  const { user } = useAuthContext();
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -31,16 +31,16 @@ export default function CreateEntry() {
       img.src = src;
     });
   }
-  
+
   async function showPreviewImg(src) {
-    setImgSrc(src)
+    setImgSrc(src);
     try {
-      const img = await loadImg(src) // throws error if invalid url
+      const img = await loadImg(src); // throws error if invalid url
       // valid img url => change to it
-      setPreviewImgSrc(img.src)
+      setPreviewImgSrc(img.src);
     } catch {
       // invalid img url => default to placeholder value
-      setPreviewImgSrc('/placeholder.jpg')
+      setPreviewImgSrc('/placeholder.jpg');
     }
   }
 
@@ -51,10 +51,10 @@ export default function CreateEntry() {
   */
 
   function resetFields() {
-    setEntryNotes('')
-    setEntryTitle('')
-    setImgSrc('')
-    setPreviewImgSrc('/placeholder.jpg')
+    setEntryNotes('');
+    setEntryTitle('');
+    setImgSrc('');
+    setPreviewImgSrc('/placeholder.jpg');
   }
 
   // Form Validation Helpers
@@ -68,7 +68,8 @@ export default function CreateEntry() {
   function checkIfValidEntryInput(str) {
     // has at least 1 alphanumeric char
     if (typeof str !== 'string') return false;
-    return !!str.split('').filter(char => checkIfCharIsAlphanumeric(char)).length;
+    return !!str.split('').filter(char => checkIfCharIsAlphanumeric(char))
+      .length;
   }
 
   async function createEntry() {
@@ -79,44 +80,44 @@ export default function CreateEntry() {
       uid: user.uid,
       timeCreated: serverTimestamp()
       // id not necessary because firebase auto assigns it
-    }
-    await addDoc(collection(db, "entries"), newEntry)
-    resetFields()
+    };
+    await addDoc(collection(db, 'entries'), newEntry);
+    resetFields();
   }
 
   async function handleSubmit(e) {
-    e.preventDefault()
+    e.preventDefault();
     // check each state
     // if valid => take away red highlight
     // if any are invalid => highlight in red
     // if ALL are valid => createEntry
-    let isValidEntry = true
-    
-    // Title 
+    let isValidEntry = true;
+
+    // Title
     if (checkIfValidEntryInput(entryTitle)) {
-      setIsValidTitle(true)
+      setIsValidTitle(true);
     } else {
-      setIsValidTitle(false)
-      isValidEntry = false
+      setIsValidTitle(false);
+      isValidEntry = false;
     }
-    
+
     // Notes
     if (checkIfValidEntryInput(entryNotes)) {
-      setIsValidNotes(true)
+      setIsValidNotes(true);
     } else {
-      setIsValidNotes(false)
-      isValidEntry = false
+      setIsValidNotes(false);
+      isValidEntry = false;
     }
 
     // Img Src
     if (previewImgSrc !== '/placeholder.jpg') {
-      setIsValidImgSrc(true)
+      setIsValidImgSrc(true);
     } else {
-      setIsValidImgSrc(false)
-      isValidEntry = false
+      setIsValidImgSrc(false);
+      isValidEntry = false;
     }
 
-    if (isValidEntry) await createEntry()
+    if (isValidEntry) await createEntry();
   }
 
   return (
@@ -127,17 +128,15 @@ export default function CreateEntry() {
           <div className="row new-entry" data-view="new-entry">
             <div className="form-header">
               <h1>New Entry</h1>
-              <button className="btn" id="view-entries-btn">
-                VIEW ENTRIES
-              </button>
+              <Link to="/">
+                <button className="btn" id="view-entries-btn">
+                  VIEW ENTRIES
+                </button>
+              </Link>
             </div>
             <form id="new-entry-form" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
-                <img
-                  id="new-entry-img"
-                  src={previewImgSrc}
-                  alt="placeholder"
-                />
+                <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
               </div>
               <div className="col-half text-wrapper">
                 <label>
@@ -146,10 +145,11 @@ export default function CreateEntry() {
                     type="text"
                     name="title"
                     id="new-entry-title"
-                    onChange={(e) => setEntryTitle(e.target.value)}
+                    onChange={e => setEntryTitle(e.target.value)}
                     value={entryTitle}
-                    className={isValidTitle ? "" : "invalid-input"}
-                    required />
+                    className={isValidTitle ? '' : 'invalid-input'}
+                    required
+                  />
                 </label>
                 <label>
                   <span>Photo URL</span>
@@ -157,9 +157,9 @@ export default function CreateEntry() {
                     type="text"
                     name="photoURL"
                     id="new-entry-photoURL"
-                    onChange={(e) => showPreviewImg(e.target.value)}
+                    onChange={e => showPreviewImg(e.target.value)}
                     value={imgSrc}
-                    className={isValidImgSrc ? "" : "invalid-input"}
+                    className={isValidImgSrc ? '' : 'invalid-input'}
                     required
                   />
                 </label>
@@ -169,11 +169,10 @@ export default function CreateEntry() {
                 <textarea
                   name="notes"
                   id="new-entry-notes"
-                  onChange={(e) => setEntryNotes(e.target.value)}
-                  className={isValidNotes ? "" : "invalid-input"}
+                  onChange={e => setEntryNotes(e.target.value)}
+                  className={isValidNotes ? '' : 'invalid-input'}
                   value={entryNotes}
-                  required
-                ></textarea>
+                  required></textarea>
               </label>
               <div className="btns-wrapper col-full">
                 <button className="btn">SAVE</button>
