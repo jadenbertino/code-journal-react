@@ -4,6 +4,7 @@ import { doc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
+import { useEntry } from '../../hooks/useEntry';
 
 // TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
@@ -36,31 +37,23 @@ export default function EditEntry() {
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
   const { user } = useAuthContext();
   const {id} = useParams()
-  const [pending, setPending] = useState(true)
+  const { getEntryById, pending, error } = useEntry()
 
-  async function getEntryById(collectionName, id) {
-    setPending(true)
-
-    const docRef = doc(db, collectionName, id)
-    const docSnap = await getDoc(docRef)
-
-    if (!docSnap.exists()) {
-      setPending(false)
-      return
-    }
-    
-    const entry = docSnap.data()
-    
-    const { title, notes, imgSrc } = entry
-
-    setEntryTitle(title)
-    setEntryNotes(notes)
-    setImgSrc(imgSrc)
-    setPreviewImgSrc(imgSrc)
-  }
-
+  // Pre-Populate Form Controls On Mount
   useEffect(() => {
-    getEntryById('entries', id)
+    async function getEntry() {
+      const entry = await getEntryById('entries', id)
+      if (entry) {
+        const { title, notes, imgSrc } = entry
+        setEntryTitle(title)
+        setEntryNotes(notes)
+        setImgSrc(imgSrc)
+        setPreviewImgSrc(imgSrc)
+      } else {
+        console.log('invalid entry id')
+      }
+    }
+    getEntry()
   }, [])
 
   function loadImg(src) {
