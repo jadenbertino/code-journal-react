@@ -91,3 +91,9 @@
     min-height: 120px;
   }
 }
+
+@media (max-width: 576px) {
+  .form-header h1 {
+    font-size: 28px;
+  }
+}
