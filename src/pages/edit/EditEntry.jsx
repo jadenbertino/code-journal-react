@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react';
-import { doc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
+import { doc, updateDoc, deleteDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
@@ -31,6 +31,7 @@ export default function EditEntry() {
   const [imgSrc, setImgSrc] = useState('');
   const [isValidImgSrc, setIsValidImgSrc] = useState(true);
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
+  const [modalActive, setModalActive] = useState(false)
   const { user } = useAuthContext();
   const {id} = useParams()
   const { getEntryById, pending, error } = useEntry()
@@ -117,6 +118,12 @@ export default function EditEntry() {
     nav('/')
   }
 
+  async function deleteEntry() {
+    const docRef = doc(db, 'entries', id)
+    await deleteDoc(docRef)
+    nav('/')
+  }
+
   async function handleSubmit(e) {
     /*
       check each state
@@ -154,8 +161,8 @@ export default function EditEntry() {
 
     if (isValidEntry) await updateEntry();
   }
-
-  return (
+  
+  return (<>
     <main>
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
@@ -211,7 +218,7 @@ export default function EditEntry() {
               </label>
               <div className="btns-wrapper col-full">
                 <button className="btn">SAVE EDITS</button>
-                <button className="delete-entry-btn hidden" type="button">
+                <button className="delete-entry-btn" type="button" onClick={() => setModalActive(true)}>
                   Delete Entry
                 </button>
               </div>
@@ -220,5 +227,16 @@ export default function EditEntry() {
         )}
       </div>
     </main>
-  );
+    {modalActive && (
+      <div className="modal-backdrop">
+        <div className="modal">
+          <h3>Are you sure you want to delete this entry?</h3>
+          <div className="btns-wrapper">
+            <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
+            <button className="btn confirm-delete-btn" onClick={deleteEntry}>CONFIRM</button>
+          </div>
+        </div>
+      </div>
+    )}
+  </>);
 }

@@ -3,6 +3,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 // TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
@@ -22,6 +23,7 @@ export default function CreateEntry() {
   const [isValidImgSrc, setIsValidImgSrc] = useState(true);
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
   const { user } = useAuthContext();
+  const nav = useNavigate()
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -117,7 +119,10 @@ export default function CreateEntry() {
       isValidEntry = false;
     }
 
-    if (isValidEntry) await createEntry();
+    if (isValidEntry) {
+      await createEntry();
+      nav('/')
+    } 
   }
 
   return (

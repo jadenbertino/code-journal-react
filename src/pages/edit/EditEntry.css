@@ -45,12 +45,12 @@
 
 */
 
-.cancel-delete-btn {
+.modal .cancel-delete-btn {
   background: #b6b6b6;
-  color: #292929
+: #292929
 }
 
-.confirm-delete-btn {
+.modal .confirm-delete-btn {
   background: #DC2626;
 }
 

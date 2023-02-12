@@ -11,6 +11,8 @@ import NoEntries from './NoEntries.jsx'
 // styles
 import './ViewEntries.css';
 
+// TODO: sort entries by timeCreated
+
 export default function ViewEntries() {
   const { user } = useAuthContext();
   const { entries, pending } = useCollection('entries', ['uid', '==', user && user.uid]);
