@@ -13,7 +13,6 @@ import { useState } from 'react';
 export default function ViewEntries() {
   const { user } = useAuthContext();
   const { entries, pending } = useCollection('entries', ['uid', '==', user && user.uid]);
-  // const [query, setQuery] = useState('')
   
   return (
     <main>
@@ -23,10 +22,10 @@ export default function ViewEntries() {
           <div className="view-entries">
             <ViewEntriesHeader />
             {pending ? 
-              <p className="loading">Loading...</p> :
-              entries ?
+              <p className="loading">Loading Entries...</p> :
+              entries.length ?
                 <RenderEntries entries={entries} /> :
-                <p>No Entries</p>
+                <p className="no-entries">No Entries</p>
             }
             <div className="reset-query-btn-wrapper">
               <button className="btn reset-query-btn hidden">
