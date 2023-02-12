@@ -1,0 +1,27 @@
+.auth-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-40px);
+}
+
+.auth-prompt .fa-lock {
+  font-size: 40px;
+}
+
+.auth-prompt h1 {
+  margin: 32px 0;
+}
+
+.auth-prompt .btns-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.auth-prompt .btn {
+  padding: 12px 40px;
+  font-size: 20px;
+  margin: 0 24px;
+}

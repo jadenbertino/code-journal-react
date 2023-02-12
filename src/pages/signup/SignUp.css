@@ -1,0 +1,45 @@
+.container.signup,
+.container.login {
+  max-width: 576px !important;
+  height: calc(100vh - 80px);
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.auth-form h1 {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  transform: translateY(-40px);
+}
+
+.auth-form label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 4px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #562B81;
+}
+
+.auth-form input {
+  margin-top: 8px;
+  margin-bottom: 32px;
+  outline: none;
+  padding: 8px;
+  font-size: 16px;
+}
+
+.auth-form .submit-btn {
+  font-size: 20px;
+}
+
+.auth-form .switch-auth-link {
+  text-align: center;
+  margin-top: 24px;
+}
