@@ -13,15 +13,8 @@ export default function Nav() {
     <nav>
       <div className="container">
         <div className="title">
+          <i class="fa-sharp fa-solid fa-bookmark"></i>
           <h3>Code Journal</h3>
-          <div className="links-wrapper">
-            <Link to="/create">
-              <button className="btn">Create</button>
-            </Link>
-            <Link to="/">
-              <button className="btn">View</button>
-            </Link>
-          </div>
         </div>
         <div className="auth">
           {!user && (<>

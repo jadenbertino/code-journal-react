@@ -19,6 +19,11 @@ nav .title {
   align-items: center;
 }
 
+nav .fa-bookmark {
+  font-size: 20px;
+  margin-right: 8px;
+}
+
 nav .title a {
   margin-left: 24px;
 }
