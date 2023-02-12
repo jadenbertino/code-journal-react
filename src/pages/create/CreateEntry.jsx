@@ -4,6 +4,7 @@ import { db } from '../../firebase/init'
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
 
+// TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
 
 // components

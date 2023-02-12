@@ -1,3 +1,7 @@
+.view-entries {
+  width: 100%
+}
+
 .view-entries .header {
   display: flex;
   justify-content: space-between;
