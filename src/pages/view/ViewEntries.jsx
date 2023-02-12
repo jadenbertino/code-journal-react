@@ -2,9 +2,11 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { AuthPrompt } from '../../components/components';
 import { useCollection } from '../../hooks/useCollection';
 import { Link } from 'react-router-dom'
+
 // components
 import ViewEntriesHeader from './ViewEntriesHeader.jsx';
 import RenderEntries from './RenderEntries.jsx';
+import NoEntries from './NoEntries.jsx'
 
 // styles
 import './ViewEntries.css';
@@ -22,14 +24,7 @@ export default function ViewEntries() {
             <ViewEntriesHeader />
             {pending ? 
               <p className="loading">Loading Entries...</p> :
-              entries.length ?
-                <RenderEntries entries={entries} /> :
-                (<div className="no-entries">
-                  <p>No Entries</p>
-                  <Link to="/create">
-                    <button className="btn">Click Here To Create A New Entry</button>
-                  </Link>
-                </div>)
+              entries.length ? <RenderEntries entries={entries} /> : <NoEntries />
             }
             <div className="reset-query-btn-wrapper">
               <button className="btn reset-query-btn hidden">
