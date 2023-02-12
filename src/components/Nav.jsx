@@ -2,13 +2,15 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import { Link } from 'react-router-dom';
 import { useLogOut } from './../hooks/useLogOut'
 import NavModal from './NavModal';
+import { useState } from 'react';
 
 // styles
 import "./Nav.css";
 
 export default function Nav() {
   const { logout } = useLogOut()
-  const {user} = useAuthContext()
+  const { user } = useAuthContext()
+  const [modalActive, setModalActive] = useState(true)
 
   return (
     <nav>
@@ -33,9 +35,12 @@ export default function Nav() {
             <button className="btn btn-sm sign-out" onClick={logout}>Sign Out</button>
           </>}
         </div>
+
         {/* MOBILE  ONLY*/}
-        <i className="fa-solid fa-bars"></i>
-        <NavModal />
+        <button className="btn mobile-hamburger" onClick={() => setModalActive(true)}>
+          <i className="fa-solid fa-bars"></i>
+        </button>
+        {modalActive && <NavModal setModalActive={setModalActive} />}
       </div>
     </nav>
   );

@@ -123,10 +123,15 @@ header {
   text-align: center;
 }
 
-.modal .fa-x {
+.modal .exit-modal-btn {
   position: absolute;
+  top: 12px; right: 24px;
+  background-color: transparent;
+}
+
+.modal .fa-x {
   font-size: 20px;
-  top: 12px; right: 32px;
+  color: #292929;
 }
 
 

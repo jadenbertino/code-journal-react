@@ -5,13 +5,13 @@ import { Link } from 'react-router-dom';
 // styles
 import './NavModal.css'
 
-export default function NavModal() {
+export default function NavModal({setModalActive}) {
   const { user } = useAuthContext()
 
   const root = document.querySelector('#root');
 
   return ReactDOM.createPortal((
-    <div className="modal-backdrop" onClick={() => console.log('clicked')}>
+    <div className="modal-backdrop">
       <div className="modal nav-modal">
         <div className="modal-content-wrapper">
           <h2>Menu</h2>
@@ -26,7 +26,9 @@ export default function NavModal() {
             <button className="btn">Log In</button>
             <button className="btn">Sign Out</button>
           </>)}
-          <i class="fa-solid fa-x"></i>
+          <button className="btn btn-sm exit-modal-btn">
+            <i class="fa-solid fa-x" onClick={() => setModalActive(false)}></i>
+          </button>
         </div>
       </div>
     </div>

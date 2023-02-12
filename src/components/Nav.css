@@ -17,7 +17,8 @@ nav h3 {
 nav .title {
   display: flex;
   align-items: center;
-  padding: 12px 12px 12px 0;
+  padding: 12px;
+  transform: translateX(-12px);
 }
 
 nav .fa-bookmark {
@@ -44,7 +45,7 @@ nav .auth .greeting {
   pointer-events: none;
 }
 
-.fa-bars {
+.mobile-hamburger {
   display: none;
 }
 
@@ -71,8 +72,13 @@ nav .auth .greeting {
     display: none;
   }
 
+  .mobile-hamburger {
+    display: flex;
+    align-items: center;
+    transform: translateX(24px);
+  }
+
   .fa-bars {
-    display: block;
-    font-size: 20px;
+    font-size: 24px;
   }
 }
