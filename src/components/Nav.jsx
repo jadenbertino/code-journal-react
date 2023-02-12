@@ -1,6 +1,7 @@
 import {useAuthContext} from '../hooks/useAuthContext'
 import { Link } from 'react-router-dom';
 import { useLogOut } from './../hooks/useLogOut'
+import NavModal from './NavModal';
 
 // styles
 import "./Nav.css";
@@ -14,7 +15,7 @@ export default function Nav() {
       <div className="container">
         <Link to="/">
           <div className="title">
-            <i class="fa-sharp fa-solid fa-bookmark"></i>
+            <i className="fa-sharp fa-solid fa-bookmark"></i>
             <h3>Code Journal</h3>
           </div>
         </Link>
@@ -32,7 +33,9 @@ export default function Nav() {
             <button className="btn btn-sm sign-out" onClick={logout}>Sign Out</button>
           </>}
         </div>
-        <i class="fa-solid fa-bars"></i>
+        {/* MOBILE  ONLY*/}
+        <i className="fa-solid fa-bars"></i>
+        <NavModal />
       </div>
     </nav>
   );
