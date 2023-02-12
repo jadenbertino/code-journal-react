@@ -18,20 +18,41 @@ export default function ViewEntries() {
   const { entries, pending } = useCollection('entries', ['uid', '==', user && user.uid]);
   const [searchQuery, setSearchQuery] = useState('');
   const searchInput = useRef()
-
-  console.log(searchInput)
-  useEffect(() => {
-    
-  }, [searchQuery])
+  const [searchCount, setSearchCount] = useState(0)
 
   //  if entries exists then sort by most recent
-  // let queriedEntries = entries && entries.sort((a, b) => b.timeCreated.seconds - a.timeCreated.seconds);
-  
-  console.log('searchQuery:', searchQuery)
+  function resetQuery() {
+    return entries && entries.sort((a, b) => b.timeCreated.seconds - a.timeCreated.seconds);
+  }
+
+  let queriedEntries = resetQuery()
+
+  // triggered on form submit
+  useEffect(() => {
+    console.log('query')
+    if (searchQuery === '') {
+      // empty query => reset
+      queriedEntries = resetQuery()
+      return
+    }
+    const queryWords = searchQuery.split(' ')
+    queriedEntries = entries.filter(entry => {
+      const allEntryWords = entry.title + entry.notes
+      for (let word of queryWords) {
+        if (allEntryWords.includes(word)) return true
+      }
+      return false
+    })
+    console.log(queriedEntries)
+  }, [searchQuery, searchCount])
+
   // enter on search => search queries
   function searchEntries(e) {
     e.preventDefault()
     setSearchQuery(searchInput.current.value)
+    setSearchCount(prev => prev + 1)
+  }
+
   //   // queriedEntries = []
   //   // entries.filter(n => false)
   //   // console.log(entries)
@@ -54,7 +75,6 @@ export default function ViewEntries() {
   //   //     return false;
   //   //   });
   //   // console.log(queriedEntries);
-  }
 
   /*
     split search query by space
@@ -90,7 +110,7 @@ export default function ViewEntries() {
             {pending ? (
               <p className="loading">Loading Entries...</p>
             ) : entries && entries.length ? (
-              <RenderEntries entries={entries} />
+              <RenderEntries entries={queriedEntries} />
             ) : (
               <NoEntries />
             )}
