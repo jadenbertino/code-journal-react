@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export default function ViewEntriesHeader() {
+export default function ViewEntriesHeader({ setSearchQuery, searchQuery }) {
   return (
     <>
       <div className="row header">
@@ -15,7 +15,7 @@ export default function ViewEntriesHeader() {
         <button className="search-btn">
           <i className="fa-solid fa-magnifying-glass"></i>
         </button>
-        <input type="text" name="searchQuery" placeholder="Search Entries..." />
+        <input type="text" onChange={(e) => setSearchQuery(e.target.value)} value={searchQuery} placeholder="Search Entries..." />
       </form>
     </>
   );

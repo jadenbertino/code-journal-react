@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom"
 
-export default function RenderEntries({ entries }) {
-  const sortedEntries = entries.sort((a,b) => b.timeCreated.seconds - a.timeCreated.seconds)
+export default function RenderEntries({ entries, searchQuery }) {
 
   return (<ul>
-    {sortedEntries.map(entry => (<li className="entry" key={entry.id}>
+    {entries.map(entry => (<li className="entry" key={entry.id}>
       <div className="img-wrapper">
         <img src={entry.imgSrc} alt="entry-img" />
       </div>
