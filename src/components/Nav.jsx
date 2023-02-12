@@ -29,7 +29,7 @@ export default function Nav() {
           </>)}
           {user && <>
             <span className="greeting">Hello, {user.displayName}</span>
-            <button className="btn sign-out" onClick={logout}>Sign Out</button>
+            <button className="btn btn-sm sign-out" onClick={logout}>Sign Out</button>
           </>}
         </div>
       </div>

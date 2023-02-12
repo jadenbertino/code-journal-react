@@ -17,11 +17,12 @@ nav h3 {
 nav .title {
   display: flex;
   align-items: center;
+  padding: 12px 12px 12px 0;
 }
 
 nav .fa-bookmark {
   font-size: 20px;
-  margin-right: 8px;
+  margin-right: 12px;
 }
 
 nav .title a {

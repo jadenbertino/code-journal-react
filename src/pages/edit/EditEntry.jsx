@@ -167,15 +167,15 @@ export default function EditEntry() {
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
-          <div className="row new-entry" data-view="new-entry">
-            <div className="form-header">
+          <div className="new-entry">
+            <header>
               <h1>Edit Entry</h1>
               <Link to="/">
-                <button className="btn" id="view-entries-btn">
-                  VIEW ENTRIES
+                <button className="btn">
+                  CANCEL EDITS
                 </button>
               </Link>
-            </div>
+            </header>
             <form id="new-entry-form" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />

@@ -1,26 +1,15 @@
-.new-entry .form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 16px;
-}
-
-#view-entries-btn {
-  padding: 12px 24px;
-}
-
 .new-entry form {
   display: flex;
   flex-wrap: wrap;
 }
 
 .new-entry .img-wrapper {
-  margin-top: 16px;
   border-radius: 8px;
   overflow: hidden;
   height: 348px;
   margin-right: 12px;
-  width: calc(50% - 12px)
+  width: calc(50% - 12px);
+  margin-bottom: 24px;
 }
 
 .new-entry .text-wrapper {
@@ -30,7 +19,7 @@
 .new-entry label {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .new-entry span {
@@ -59,7 +48,6 @@
 }
 
 .new-entry .btns-wrapper {
-  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
@@ -93,7 +81,7 @@
 }
 
 @media (max-width: 576px) {
-  .form-header h1 {
+  header h1 {
     font-size: 28px;
   }
 }

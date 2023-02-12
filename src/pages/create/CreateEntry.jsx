@@ -130,15 +130,15 @@ export default function CreateEntry() {
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
-          <div className="row new-entry" data-view="new-entry">
-            <div className="form-header">
+          <div className="new-entry">
+            <header>
               <h1>New Entry</h1>
               <Link to="/">
-                <button className="btn" id="view-entries-btn">
+                <button className="btn">
                   VIEW ENTRIES
                 </button>
               </Link>
-            </div>
+            </header>
             <form id="new-entry-form" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
@@ -178,9 +178,6 @@ export default function CreateEntry() {
               </label>
               <div className="btns-wrapper col-full">
                 <button className="btn">SAVE</button>
-                <button className="delete-entry-btn hidden" type="button">
-                  Delete Entry
-                </button>
               </div>
             </form>
           </div>
