@@ -6,7 +6,6 @@ import { useEffect, useState, useRef } from 'react';
 
 // components
 import RenderEntries from './RenderEntries.jsx';
-import NoEntries from './NoEntries.jsx';
 
 // styles
 import './ViewEntries.css';
@@ -79,13 +78,8 @@ export default function ViewEntries() {
                 ref={searchInput}
               />
             </form>
-            {pending ? (
-              <p className="loading">Loading Entries...</p>
-            ) : entries && entries.length ? (
-              <RenderEntries entries={entries} searchQuery={searchQuery}/>
-            ) : (
-              <NoEntries />
-            )}
+            {pending && <p className="loading">Loading Entries...</p>}
+            {!pending && <RenderEntries entries={entries} searchQuery={searchQuery}/> }
             <div className="reset-query-btn-wrapper">
               <button className="btn reset-query-btn hidden">
                 View All Entries
