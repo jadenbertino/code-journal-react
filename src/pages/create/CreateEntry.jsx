@@ -122,7 +122,7 @@ export default function CreateEntry() {
 
   return (
     <main>
-      <div className="container vh-100 fc">
+      <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
           <div className="row new-entry" data-view="new-entry">

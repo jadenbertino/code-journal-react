@@ -17,13 +17,13 @@ export default function ViewEntries() {
   
   return (
     <main>
-      <div className="container">
+      <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
           <div className="view-entries">
             <ViewEntriesHeader />
             {pending ? 
-              <p class="loading">Loading...</p> :
+              <p className="loading">Loading...</p> :
               entries ?
                 <RenderEntries entries={entries} /> :
                 <p>No Entries</p>
