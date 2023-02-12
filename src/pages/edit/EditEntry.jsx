@@ -5,16 +5,12 @@ import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useEntry } from '../../hooks/useEntry';
+import { useNavigate } from 'react-router-dom';
 
 // TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
 
 /*
-  useEffect
-    fetch doc
-    rip out values
-    set state of to those values
-  
   imgPreview & form validation stays the same afaik
 
   onSubmit => updates the doc instead of adding it
@@ -38,6 +34,7 @@ export default function EditEntry() {
   const { user } = useAuthContext();
   const {id} = useParams()
   const { getEntryById, pending, error } = useEntry()
+  const nav = useNavigate()
 
   // Pre-Populate Form Controls On Mount
   useEffect(() => {
@@ -105,25 +102,30 @@ export default function EditEntry() {
       .length;
   }
 
-  // async function createEntry() {
-  //   const newEntry = {
-  //     title: entryTitle,
-  //     notes: entryNotes,
-  //     imgSrc,
-  //     uid: user.uid,
-  //     timeCreated: serverTimestamp()
-  //     // id not necessary because firebase auto assigns it
-  //   };
-  //   await addDoc(collection(db, 'entries'), newEntry);
-  //   resetFields();
-  // }
+  async function updateEntry() {
+    const docRef = doc(db, 'entries', id)
+    const newEntry = {
+      title: entryTitle,
+      notes: entryNotes,
+      imgSrc,
+      uid: user.uid,
+      timeCreated: serverTimestamp()
+      // id not necessary because firebase auto assigns it
+    };
+    await updateDoc(docRef, newEntry)
+    resetFields();
+    nav('/')
+  }
 
   async function handleSubmit(e) {
+    /*
+      check each state
+      if valid => take away red highlight
+      if any are invalid => highlight in red
+      if ALL are valid => createEntry
+    */
+  
     e.preventDefault();
-    // check each state
-    // if valid => take away red highlight
-    // if any are invalid => highlight in red
-    // if ALL are valid => createEntry
     let isValidEntry = true;
 
     // Title
@@ -150,7 +152,7 @@ export default function EditEntry() {
       isValidEntry = false;
     }
 
-    // if (isValidEntry) await createEntry();
+    if (isValidEntry) await updateEntry();
   }
 
   return (
