@@ -16,7 +16,9 @@ export default function Nav() {
           <Link to="/">
             <h3>Code Journal</h3>
           </Link>
-          <button className="btn">Entries</button>
+          <Link to="/">
+            <button className="btn">Entries</button>
+          </Link>
         </div>
         <div className="auth">
           {!user && (<>
