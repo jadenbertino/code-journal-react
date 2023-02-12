@@ -5,7 +5,7 @@ import { useEffect, useState } from "react"
 export default function RenderEntries({ entries, searchQuery, resetQuery }) {
   const [queriedEntries, setQueriedEntries] = useState([...entries])
   
-  function resetQuery() {
+  function resetQueriedEntries() {
     setQueriedEntries([...entries].sort((a, b) => a.timeCreated.seconcds - b.timeCreated.seconds))
   }
 
@@ -13,7 +13,7 @@ export default function RenderEntries({ entries, searchQuery, resetQuery }) {
   useEffect(() => {
     if (searchQuery === '') {
       // empty query => reset
-      resetQuery()
+      resetQueriedEntries()
       return
     }
     
