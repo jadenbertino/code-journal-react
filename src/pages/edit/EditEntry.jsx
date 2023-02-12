@@ -1,12 +1,23 @@
 import { useParams } from 'react-router-dom'
-import { useState } from 'react';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { useEffect, useState } from 'react';
+import { doc, getDoc, updateDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 
 // TODO: trim whitespace from any form controls upon submission
 // TODO: redirect back to locked content upon sign in / sign up
+
+/*
+  useEffect
+    fetch doc
+    rip out values
+    set state of to those values
+  
+  imgPreview & form validation stays the same afaik
+
+  onSubmit => updates the doc instead of adding it
+*/
 
 // components
 import { AuthPrompt } from '../../components/components';
@@ -25,6 +36,32 @@ export default function EditEntry() {
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
   const { user } = useAuthContext();
   const {id} = useParams()
+  const [pending, setPending] = useState(true)
+
+  async function getEntryById(collectionName, id) {
+    setPending(true)
+
+    const docRef = doc(db, collectionName, id)
+    const docSnap = await getDoc(docRef)
+
+    if (!docSnap.exists()) {
+      setPending(false)
+      return
+    }
+    
+    const entry = docSnap.data()
+    
+    const { title, notes, imgSrc } = entry
+
+    setEntryTitle(title)
+    setEntryNotes(notes)
+    setImgSrc(imgSrc)
+    setPreviewImgSrc(imgSrc)
+  }
+
+  useEffect(() => {
+    getEntryById('entries', id)
+  }, [])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -75,18 +112,18 @@ export default function EditEntry() {
       .length;
   }
 
-  async function createEntry() {
-    const newEntry = {
-      title: entryTitle,
-      notes: entryNotes,
-      imgSrc,
-      uid: user.uid,
-      timeCreated: serverTimestamp()
-      // id not necessary because firebase auto assigns it
-    };
-    await addDoc(collection(db, 'entries'), newEntry);
-    resetFields();
-  }
+  // async function createEntry() {
+  //   const newEntry = {
+  //     title: entryTitle,
+  //     notes: entryNotes,
+  //     imgSrc,
+  //     uid: user.uid,
+  //     timeCreated: serverTimestamp()
+  //     // id not necessary because firebase auto assigns it
+  //   };
+  //   await addDoc(collection(db, 'entries'), newEntry);
+  //   resetFields();
+  // }
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -120,7 +157,7 @@ export default function EditEntry() {
       isValidEntry = false;
     }
 
-    if (isValidEntry) await createEntry();
+    // if (isValidEntry) await createEntry();
   }
 
   return (
@@ -130,7 +167,7 @@ export default function EditEntry() {
         {user && (
           <div className="row new-entry" data-view="new-entry">
             <div className="form-header">
-              <h1>New Entry</h1>
+              <h1>Edit Entry</h1>
               <Link to="/">
                 <button className="btn" id="view-entries-btn">
                   VIEW ENTRIES
