@@ -20,30 +20,28 @@ export default function NavModal({setModalActive}) {
 
   return (
     <Modal>
-      <div className="nav-modal">
-        <div className="modal-content-wrapper" onClick={handleClick}>
-          <h2>Menu</h2>
-          <Link to="/">
-            <button className="btn">View Entries</button>
-          </Link>
-          <Link to="/create">
-            <button className="btn">New Entry</button>
-          </Link>
-          {user && <button className="btn" id="nav-sign-out-btn"onClick={handleLogOut}>Sign Out</button>}
-          {!user && (
-            <>
-              <Link to="/login">
-                <button className="btn">Log In</button>
-              </Link>
-              <Link to="/signup">
-                <button className="btn">Sign Up</button>
-              </Link>
-            </>
-          )}
-          <button className="btn btn-sm exit-modal-btn">
-            <i className="fa-solid fa-x"></i>
-          </button>
-        </div>
+      <div className="nav-modal" onClick={handleClick}>
+        <h2>Menu</h2>
+        <Link to="/">
+          <button className="btn">View Entries</button>
+        </Link>
+        <Link to="/create">
+          <button className="btn">New Entry</button>
+        </Link>
+        {user && <button className="btn" id="nav-sign-out-btn"onClick={handleLogOut}>Sign Out</button>}
+        {!user && (
+          <>
+            <Link to="/login">
+              <button className="btn">Log In</button>
+            </Link>
+            <Link to="/signup">
+              <button className="btn">Sign Up</button>
+            </Link>
+          </>
+        )}
+        <button className="btn btn-sm exit-modal-btn">
+          <i className="fa-solid fa-x"></i>
+        </button>
       </div>
     </Modal>
   )

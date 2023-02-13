@@ -98,6 +98,10 @@ header {
   border-radius: 12px;
 }
 
+p {
+  word-break: break-all;
+}
+
 /*
 
     MODAL
@@ -120,19 +124,18 @@ header {
   min-height: 150px;
   background: #fff;
   border-radius: 8px;
+  padding: 32px 24px 48px;
+  text-align: center;
 }
 
-.modal-content-wrapper {
-  padding: 32px 24px 48px;
-  position: relative;
+.nav-modal {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  text-align: center;
 }
 
-.modal-content-wrapper a .btn,
+.nav-modal a .btn,
 #nav-sign-out-btn {
   width: 200px;
 }
@@ -171,12 +174,29 @@ header {
   background: #DC2626;
 }
 
-.nav-modal .modal-content-wrapper > * {
+.nav-modal > * {
   margin: 12px 0;
 }
 
-p {
-  word-break: break-all;
+
+
+.confirm-delete-modal {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirm-delete-modal .btns-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.confirm-delete-modal h3 {
+  font-size: 24px;
+}
+
+.confirm-delete-modal .btn {
+  margin: 24px 12px 0;
 }
 
 

@@ -15,6 +15,7 @@ import { useNavigate } from 'react-router-dom';
 
 // components
 import { AuthPrompt } from '../../components/components';
+import Modal from '../../components/Modal';
 
 // styles
 import '../create/CreateEntry.css'
@@ -218,15 +219,15 @@ export default function EditEntry() {
       </div>
     </main>
     {modalActive && (
-      <div className="modal-backdrop">
-        <div className="modal confirm-delete">
+      <Modal>
+        <div className="confirm-delete-modal">
           <h3>Are you sure you want to delete this entry?</h3>
           <div className="btns-wrapper">
             <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
             <button className="btn confirm-delete-btn" onClick={deleteEntry}>CONFIRM</button>
           </div>
         </div>
-      </div>
+      </Modal>
     )}
   </>);
 }
