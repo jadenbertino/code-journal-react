@@ -143,12 +143,12 @@
 */
 
 @media screen and (max-width: 992px) {
-  .view-entries .entry {
+  .entry {
     flex-direction: column;
   }
 
-  .entry .header-wrapper {
-    border-bottom: none;
+  .entry .title-wrapper {
+    margin-top: 8px;
   }
 
   .view-entries .img-wrapper {

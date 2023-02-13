@@ -1,4 +1,4 @@
-import ReactDOM from 'react-dom';
+import Modal from './Modal';
 import { useAuthContext } from '../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useLogOut } from '../hooks/useLogOut';
@@ -8,7 +8,6 @@ import { useLogOut } from '../hooks/useLogOut';
 export default function NavModal({setModalActive}) {
   const { user } = useAuthContext()
   const { logout } = useLogOut()
-  const root = document.querySelector('#root');
 
   async function handleLogOut() {
     await logout()
@@ -18,10 +17,10 @@ export default function NavModal({setModalActive}) {
   function handleClick(e) {
     if (e.target.tagName === 'BUTTON') setModalActive(false)
   }
-  
-  return ReactDOM.createPortal((
-    <div className="modal-backdrop">
-      <div className="modal nav-modal">
+
+  return (
+    <Modal>
+      <div className="nav-modal">
         <div className="modal-content-wrapper" onClick={handleClick}>
           <h2>Menu</h2>
           <Link to="/">
@@ -46,20 +45,6 @@ export default function NavModal({setModalActive}) {
           </button>
         </div>
       </div>
-    </div>
-  ), root);
-
+    </Modal>
+  )
 }
-
-
-/*
-  <div className="modal-backdrop">
-    <div className="modal">
-      <h3>Are you sure you want to delete this entry?</h3>
-      <div className="btns-wrapper">
-        <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
-        <button className="btn confirm-delete-btn" onClick={deleteEntry}>CONFIRM</button>
-      </div>
-    </div>
-  </div>
-*/

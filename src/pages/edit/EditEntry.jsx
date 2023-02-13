@@ -219,7 +219,7 @@ export default function EditEntry() {
     </main>
     {modalActive && (
       <div className="modal-backdrop">
-        <div className="modal">
+        <div className="modal confirm-delete">
           <h3>Are you sure you want to delete this entry?</h3>
           <div className="btns-wrapper">
             <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
