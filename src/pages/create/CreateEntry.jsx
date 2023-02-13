@@ -129,7 +129,7 @@ export default function CreateEntry() {
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
-          <div className="new-entry">
+          <>
             <header>
               <h1>New Entry</h1>
               <Link to="/">
@@ -138,7 +138,7 @@ export default function CreateEntry() {
                 </button>
               </Link>
             </header>
-            <form className="card" onSubmit={handleSubmit}>
+            <form className="card entry-form" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img src={previewImgSrc} alt="placeholder" />
               </div>
@@ -176,7 +176,7 @@ export default function CreateEntry() {
                 <button className="btn">SAVE</button>
               </div>
             </form>
-          </div>
+          </>
         )}
       </div>
     </main>

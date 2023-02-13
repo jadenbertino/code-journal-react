@@ -177,11 +177,11 @@ export default function EditEntry() {
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && entry && (
-          <div className="new-entry">
+          <>
             <header>
               <h1>Edit Entry</h1>
             </header>
-            <form className="card" onSubmit={handleSubmit}>
+            <form className="entry-form card" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img src={previewImgSrc} alt="placeholder" />
               </div>
@@ -229,7 +229,7 @@ export default function EditEntry() {
                 </button>
               </div>
             </form>
-          </div>
+          </>
         )}
         {user && !pending && !entry && (
           <div className="entry-not-found">
