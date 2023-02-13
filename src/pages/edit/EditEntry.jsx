@@ -18,7 +18,6 @@ import { AuthPrompt } from '../../components/components';
 
 // styles
 import '../create/CreateEntry.css'
-import './EditEntry.css'
 
 export default function EditEntry() {
   const [entryTitle, setEntryTitle] = useState('');
@@ -33,7 +32,7 @@ export default function EditEntry() {
   const {id} = useParams()
   const { getEntryById } = useEntry()
   const nav = useNavigate()
-
+  
   // Pre-Populate Form Controls On Mount
   useEffect(() => {
     async function getEntry() {
@@ -173,7 +172,7 @@ export default function EditEntry() {
                 </button>
               </Link>
             </header>
-            <form id="new-entry-form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
               </div>

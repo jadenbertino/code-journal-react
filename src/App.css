@@ -68,7 +68,7 @@ img {
   position: relative;
   max-width: 768px;
   margin: 0 auto;
-  padding: 0 24px;
+  padding: 0 20px;
 }
 
 .row {
@@ -88,7 +88,8 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 32px 0;
+  margin-top: 32px;
+  margin-bottom: 24px;
 }
 
 /*

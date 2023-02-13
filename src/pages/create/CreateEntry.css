@@ -57,6 +57,14 @@
   outline: medium solid red;
 }
 
+.delete-entry-btn {
+  background: transparent;
+  color: #DC2626;
+  text-decoration: underline;
+  border: none;
+  font-size: 14px;
+}
+
 /*
 
     DESKTOP
@@ -85,3 +93,4 @@
     font-size: 28px;
   }
 }
+

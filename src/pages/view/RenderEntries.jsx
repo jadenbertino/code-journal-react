@@ -47,7 +47,7 @@ export default function RenderEntries({ entries, searchQuery, resetQuery }) {
       {queriedEntries.length ? 
         <ul>
           {queriedEntries.map(entry => (
-            <li className="entry" key={entry.id}>
+            <li className="entry card" key={entry.id}>
               <div className="img-wrapper">
                 <img src={entry.imgSrc} alt="entry-img" />
               </div>

@@ -24,6 +24,7 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  background-color: transparent;
 }
 
 .search input {
@@ -46,6 +47,8 @@
 
 */
 
+
+
 .view-entries .loading {
   text-align: center;
   margin-top: 16px;
@@ -54,7 +57,13 @@
 .view-entries .entry {
   display: flex;
   list-style-type: none;
-  margin: 48px 0;
+  margin: 40px 0;
+}
+
+.entry.card {
+  background-color: #fff;
+  padding: 28px;
+  border-radius: 12px;
 }
 
 .entry .img-wrapper {
@@ -84,12 +93,11 @@
 }
 
 .entry .entry-title {
-  font-size: 20px;
-  margin-top: 0;
 }
 
 .entry .entry-title {
   font-size: 20px;
+  margin-top: 0;
   margin-bottom: 8px;
 }
 
@@ -165,5 +173,10 @@
 @media (max-width: 576px) {
   .view-entries h1 {
     font-size: 28px;
+  }
+
+  
+  .card {
+    padding: 20px;
   }
 }
