@@ -242,18 +242,19 @@ export default function EditEntry() {
             </Link>
           </div>
         )}
+        {modalActive && (
+          <Modal>
+            <div className="confirm-delete-modal">
+              <h3>Are you sure you want to delete this entry?</h3>
+              <div className="btns-wrapper">
+                <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
+                <button className="btn confirm-delete-btn" onClick={deleteEntry}>CONFIRM</button>
+              </div>
+            </div>
+          </Modal>
+        )}
       </div>
     </main>
-    {modalActive && (
-      <Modal>
-        <div className="confirm-delete-modal">
-          <h3>Are you sure you want to delete this entry?</h3>
-          <div className="btns-wrapper">
-            <button className="btn cancel-delete-btn" onClick={() => setModalActive(false)}>CANCEL</button>
-            <button className="btn confirm-delete-btn" onClick={deleteEntry}>CONFIRM</button>
-          </div>
-        </div>
-      </Modal>
-    )}
+
   </>);
 }
