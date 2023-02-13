@@ -10,7 +10,7 @@ import "./Nav.css";
 export default function Nav() {
   const { logout } = useLogOut()
   const { user } = useAuthContext()
-  const [modalActive, setModalActive] = useState(true)
+  const [modalActive, setModalActive] = useState(false)
 
   return (
     <nav>
