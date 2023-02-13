@@ -13,6 +13,7 @@
 
 .search {
   display: flex;
+  background-color: #fff;
 }
 
 .search .search-btn {

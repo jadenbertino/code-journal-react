@@ -167,11 +167,6 @@ export default function EditEntry() {
           <div className="new-entry">
             <header>
               <h1>Edit Entry</h1>
-              <Link to="/">
-                <button className="btn swap-views-btn">
-                  CANCEL EDITS
-                </button>
-              </Link>
             </header>
             <form className="card" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
@@ -208,7 +203,14 @@ export default function EditEntry() {
                   required></textarea>
               </label>
               <div className="btns-wrapper col-full">
-                <button className="btn">SAVE EDITS</button>
+                <div className="save-or-cancel">
+                  <button className="btn">SAVE</button>
+                  <Link to="/">
+                    <button className="btn swap-views-btn">
+                      CANCEL
+                    </button>
+                  </Link>
+                </div>
                 <button className="delete-entry-btn" type="button" onClick={() => setModalActive(true)}>
                   Delete Entry
                 </button>
