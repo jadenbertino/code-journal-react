@@ -31,7 +31,11 @@
     MOBILE
 
 */
-
+@media (max-width: 768px) {
+  .auth-prompt h1 {
+    font-size: 32px;
+  }
+}
 @media (max-width: 576px) {
   .auth-prompt h1 {
     font-size: 28px;

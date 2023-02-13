@@ -73,7 +73,8 @@ nav .auth .greeting {
   .mobile-hamburger {
     display: flex;
     align-items: center;
-    transform: translateX(24px);
+    transform: translateX(12px);
+    padding: 12px !important;
   }
 
   .fa-bars {
