@@ -2,7 +2,7 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import { AuthPrompt } from '../../components/components';
 import { useCollection } from '../../hooks/useCollection';
 import { Link } from 'react-router-dom';
-import { useEffect, useState, useRef } from 'react';
+import { useState, useRef } from 'react';
 
 // components
 import RenderEntries from './RenderEntries.jsx';
@@ -17,7 +17,6 @@ export default function ViewEntries() {
   const [searchQuery, setSearchQuery] = useState('');
   const [currentSearchQuery, setCurrentSearchQuery] = useState('')
   const searchInput = useRef()
-  // const [queriedEntries, setQueriedEntries] = useState([])
 
   // enter on search => search queries
   function searchEntries(e) {
@@ -29,36 +28,6 @@ export default function ViewEntries() {
     setSearchQuery('')
     setCurrentSearchQuery('')
   }
-
-  //   // queriedEntries = []
-  //   // entries.filter(n => false)
-  //   // console.log(entries)
-  //   return
-  //   if (searchQuery === '') {
-      
-  //   }
-
-  //   // get list of words to sort for
-  //   const searchQueryWords = searchQuery.split(' ');
-
-  //   // if a word from searchQuery in entry title or notes then it will pass filter
-  //   // const queriedEntries =
-  //   //   sortedEntries &&
-  //   //   sortedEntries.filter(entry => {
-  //   //     const entryWords = entry.title + entry.notes;
-  //   //     for (let word of searchQueryWords) {
-  //   //       if (entryWords.includes(word)) return true;
-  //   //     }
-  //   //     return false;
-  //   //   });
-  //   // console.log(queriedEntries);
-
-  /*
-    split search query by space
-    iterate through entries
-      get words in entry title + notes, mash them all together
-      if that string contains any word in search query words then return true
-  */
 
   return (
     <main>

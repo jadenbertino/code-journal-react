@@ -7,9 +7,6 @@ import { Link } from 'react-router-dom';
 import { useEntry } from '../../hooks/useEntry';
 import { useNavigate } from 'react-router-dom';
 
-// TODO: trim whitespace from any form controls upon submission
-// TODO: redirect back to locked content upon sign in / sign up
-
 /*
   imgPreview & form validation stays the same afaik
 
@@ -34,7 +31,7 @@ export default function EditEntry() {
   const [modalActive, setModalActive] = useState(false)
   const { user } = useAuthContext();
   const {id} = useParams()
-  const { getEntryById, pending, error } = useEntry()
+  const { getEntryById } = useEntry()
   const nav = useNavigate()
 
   // Pre-Populate Form Controls On Mount
@@ -52,7 +49,7 @@ export default function EditEntry() {
       }
     }
     getEntry()
-  }, [])
+  }, [getEntryById, id])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {

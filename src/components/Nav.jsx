@@ -2,7 +2,8 @@ import {useAuthContext} from '../hooks/useAuthContext'
 import { Link } from 'react-router-dom';
 import { useLogOut } from './../hooks/useLogOut'
 import NavModal from './NavModal';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useWindowSize } from '../hooks/useWindowSize';
 
 // styles
 import "./Nav.css";
@@ -11,6 +12,13 @@ export default function Nav() {
   const { logout } = useLogOut()
   const { user } = useAuthContext()
   const [modalActive, setModalActive] = useState(false)
+  const {width: screenWidth} = useWindowSize()
+
+  useEffect(() => {
+    if (modalActive && screenWidth > 576) {
+      setModalActive(false)
+    }
+  }, [screenWidth, modalActive])
 
   return (
     <nav>
