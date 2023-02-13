@@ -21,6 +21,7 @@ import Modal from '../../components/Modal';
 import '../create/CreateEntry.css'
 
 export default function EditEntry() {
+  // form controls
   const [entryTitle, setEntryTitle] = useState('');
   const [isValidTitle, setIsValidTitle] = useState(true);
   const [entryNotes, setEntryNotes] = useState('');
@@ -28,11 +29,14 @@ export default function EditEntry() {
   const [imgSrc, setImgSrc] = useState('');
   const [isValidImgSrc, setIsValidImgSrc] = useState(true);
   const [previewImgSrc, setPreviewImgSrc] = useState('/placeholder.jpg');
+
+  // logic
   const [modalActive, setModalActive] = useState(false)
   const { user } = useAuthContext();
   const {id} = useParams()
   const { getEntryById } = useEntry()
   const nav = useNavigate()
+  const [error, setError] = useState(false)
 
   // Pre-Populate Form Controls On Mount
   useEffect(() => {
