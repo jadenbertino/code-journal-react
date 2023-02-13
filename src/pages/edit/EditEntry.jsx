@@ -49,7 +49,7 @@ export default function EditEntry() {
       }
     }
     getEntry()
-  }, [getEntryById, id])
+  }, [])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -183,8 +183,8 @@ export default function EditEntry() {
                   <input
                     type="text"
                     id="new-entry-title"
-                    onChange={e => setEntryTitle(e.target.value)}
                     value={entryTitle}
+                    onChange={e => setEntryTitle(e.target.value)}
                     className={isValidTitle ? '' : 'invalid-input'}
                     required
                   />
