@@ -143,16 +143,15 @@ export default function CreateEntry() {
                 </button>
               </Link>
             </header>
-            <form id="new-entry-form" onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
-                <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
+                <img src={previewImgSrc} alt="placeholder" />
               </div>
               <div className="col-half text-wrapper">
                 <label>
                   <span>Title</span>
                   <input
                     type="text"
-                    id="new-entry-title"
                     onChange={e => setEntryTitle(e.target.value)}
                     value={entryTitle}
                     className={isValidTitle ? '' : 'invalid-input'}
@@ -163,7 +162,6 @@ export default function CreateEntry() {
                   <span>Photo URL</span>
                   <input
                     type="text"
-                    id="new-entry-photoURL"
                     onChange={e => showPreviewImg(e.target.value)}
                     value={imgSrc}
                     className={isValidImgSrc ? '' : 'invalid-input'}
@@ -174,7 +172,6 @@ export default function CreateEntry() {
               <label className="col-full">
                 <span>Notes</span>
                 <textarea
-                  id="new-entry-notes"
                   onChange={e => setEntryNotes(e.target.value)}
                   className={isValidNotes ? '' : 'invalid-input'}
                   value={entryNotes}

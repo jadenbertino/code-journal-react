@@ -32,7 +32,7 @@ export default function EditEntry() {
   const {id} = useParams()
   const { getEntryById } = useEntry()
   const nav = useNavigate()
-  
+
   // Pre-Populate Form Controls On Mount
   useEffect(() => {
     async function getEntry() {
@@ -172,16 +172,15 @@ export default function EditEntry() {
                 </button>
               </Link>
             </header>
-            <form onSubmit={handleSubmit}>
+            <form className="card" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
-                <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
+                <img src={previewImgSrc} alt="placeholder" />
               </div>
               <div className="col-half text-wrapper">
                 <label>
                   <span>Title</span>
                   <input
                     type="text"
-                    id="new-entry-title"
                     value={entryTitle}
                     onChange={e => setEntryTitle(e.target.value)}
                     className={isValidTitle ? '' : 'invalid-input'}
@@ -192,7 +191,6 @@ export default function EditEntry() {
                   <span>Photo URL</span>
                   <input
                     type="text"
-                    id="new-entry-photoURL"
                     onChange={e => showPreviewImg(e.target.value)}
                     value={imgSrc}
                     className={isValidImgSrc ? '' : 'invalid-input'}
@@ -203,7 +201,6 @@ export default function EditEntry() {
               <label className="col-full">
                 <span>Notes</span>
                 <textarea
-                  id="new-entry-notes"
                   onChange={e => setEntryNotes(e.target.value)}
                   className={isValidNotes ? '' : 'invalid-input'}
                   value={entryNotes}

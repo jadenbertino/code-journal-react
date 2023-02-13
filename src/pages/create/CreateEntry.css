@@ -1,6 +1,7 @@
-.new-entry form {
+form.card {
   display: flex;
   flex-wrap: wrap;
+  padding: 40px;
 }
 
 .new-entry .img-wrapper {
@@ -72,7 +73,9 @@
 */
 
 @media (max-width: 992px) {
-
+  form.card {
+    padding: 20px; 
+  }
   .new-entry .img-wrapper {
     height: 280px;
     width: 100%;
@@ -85,12 +88,6 @@
 
   .new-entry textarea {
     min-height: 120px;
-  }
-}
-
-@media (max-width: 576px) {
-  header h1 {
-    font-size: 28px;
   }
 }
 

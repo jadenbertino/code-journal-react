@@ -60,11 +60,7 @@
   margin: 40px 0;
 }
 
-.entry.card {
-  background-color: #fff;
-  padding: 28px;
-  border-radius: 12px;
-}
+
 
 .entry .img-wrapper {
   border-radius: 8px;
@@ -166,17 +162,6 @@
   }
 
   .entry .entry-title {
-    margin-top: 16px;
-  }
-}
-
-@media (max-width: 576px) {
-  .view-entries h1 {
-    font-size: 28px;
-  }
-
-  
-  .card {
-    padding: 20px;
+    margin-top: 8px;
   }
 }
