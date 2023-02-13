@@ -13,6 +13,7 @@
 
 .search {
   display: flex;
+  flex-wrap: nowrap;
   background-color: #fff;
 }
 

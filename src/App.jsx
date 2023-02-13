@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useAuthContext } from './hooks/useAuthContext';
 
 // pages
-import { CreateEntry, EditEntry, ViewEntries, SignUp, LogIn } from './pages/pages'
+import { CreateEntry, EditEntry, ViewEntries, SignUp, LogIn, CreateAndEdit } from './pages/pages'
 
 // components
 import { Nav } from './components/components'

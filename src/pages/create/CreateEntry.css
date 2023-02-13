@@ -1,15 +1,20 @@
 form.card {
   display: flex;
   flex-wrap: wrap;
-  padding: 40px;
+  padding: 32px;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .new-entry .img-wrapper {
+  margin-right: 12px;
+  width: calc(50% - 12px);
   border-radius: 8px;
   overflow: hidden;
   height: 348px;
-  margin-right: 12px;
-  width: calc(50% - 12px);
   margin-bottom: 24px;
 }
 
@@ -93,9 +98,7 @@ form.card {
 */
 
 @media (max-width: 992px) {
-  form.card {
-    padding: 20px; 
-  }
+
   .new-entry .img-wrapper {
     height: 280px;
     width: 100%;
@@ -112,6 +115,9 @@ form.card {
 }
 
 @media (max-width: 576px) {
+  form.card {
+    padding: 24px; 
+  }
   .new-entry .btns-wrapper {
     flex-direction: column;
     align-items: center;

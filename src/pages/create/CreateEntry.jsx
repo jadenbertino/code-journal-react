@@ -4,11 +4,6 @@ import { db } from '../../firebase/init';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-
-// TODO: trim whitespace from any form controls upon submission
-// TODO: redirect back to locked content upon sign in / sign up
-
-// components
 import { AuthPrompt } from '../../components/components';
 
 // styles
@@ -51,7 +46,7 @@ export default function CreateEntry() {
       FORM SUBMISSION LOGIC
 
   */
-
+  
   // Form Validation Helpers
   function checkIfCharIsAlphanumeric(char) {
     if (typeof char !== 'string') return false;
@@ -143,7 +138,7 @@ export default function CreateEntry() {
                 </button>
               </Link>
             </header>
-            <form onSubmit={handleSubmit}>
+            <form className="card" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img src={previewImgSrc} alt="placeholder" />
               </div>
