@@ -6,7 +6,7 @@ export default function RenderEntries({ entries, searchQuery, resetQuery }) {
   const [queriedEntries, setQueriedEntries] = useState([...entries])
   
   function resetQueriedEntries() {
-    setQueriedEntries([...entries].sort((a, b) => a.timeCreated.seconcds - b.timeCreated.seconds))
+    setQueriedEntries([...entries].sort((a, b) => b.timeCreated.seconds - a.timeCreated.seconds))
   }
 
   // triggered on form submit (anytime searchQuery changes)

@@ -52,13 +52,6 @@ export default function CreateEntry() {
 
   */
 
-  function resetFields() {
-    setEntryNotes('');
-    setEntryTitle('');
-    setImgSrc('');
-    setPreviewImgSrc('/placeholder.jpg');
-  }
-
   // Form Validation Helpers
   function checkIfCharIsAlphanumeric(char) {
     if (typeof char !== 'string') return false;
@@ -76,9 +69,9 @@ export default function CreateEntry() {
 
   async function createEntry() {
     const newEntry = {
-      title: entryTitle,
-      notes: entryNotes,
-      imgSrc,
+      title: entryTitle.trim(),
+      notes: entryNotes.trim(),
+      imgSrc: imgSrc.trim(),
       uid: user.uid,
       timeCreated: serverTimestamp()
       // id not necessary because firebase auto assigns it
@@ -89,10 +82,13 @@ export default function CreateEntry() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    // check each state
-    // if valid => take away red highlight
-    // if any are invalid => highlight in red
-    // if ALL are valid => createEntry
+    /*
+      check each state
+      if valid => take away red highlight
+      if any are invalid => highlight in red
+      if ALL are valid => createEntry
+    */
+  
     let isValidEntry = true;
 
     // Title
@@ -118,11 +114,19 @@ export default function CreateEntry() {
       setIsValidImgSrc(false);
       isValidEntry = false;
     }
-
+    
+    // If Valid => Submit Entry
     if (isValidEntry) {
       await createEntry();
       nav('/')
     } 
+  }
+
+  function resetFields() {
+    setEntryNotes('');
+    setEntryTitle('');
+    setImgSrc('');
+    setPreviewImgSrc('/placeholder.jpg');
   }
 
   return (
