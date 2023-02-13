@@ -1,24 +1,30 @@
 import { db } from "../firebase/init"
 import { doc, getDoc } from "firebase/firestore"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-export function useEntry() {
+export function useEntry(id) {
+  const [entry, setEntry] = useState(null)
   const [pending, setPending] = useState(true)
-  const [error, setError] = useState(false)
 
-  async function getEntryById(collectionName, id) {
-    setError(false)
-    setPending(true)
-    const docRef = doc(db, collectionName, id)
-    const docSnap = await getDoc(docRef)
-    if (!docSnap.exists()) {
+  useEffect(() => {
+    async function getEntryById(entryID) {
+      setPending(true)
+
+      const docRef = doc(db, 'entries', entryID)
+      const docSnap = await getDoc(docRef)
+
+      if (!docSnap.exists()) {
+        setPending(false)
+        return
+      }
+      
+      setEntry(docSnap.data())
       setPending(false)
-      setError(true)
-      return
     }
-    return docSnap.data()
-  }
+    getEntryById(id)
+  }, [])
 
-  return { getEntryById, pending, error }
+
+  return {entry, pending}
 }

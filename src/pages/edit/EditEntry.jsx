@@ -34,26 +34,35 @@ export default function EditEntry() {
   const [modalActive, setModalActive] = useState(false)
   const { user } = useAuthContext();
   const {id} = useParams()
-  const { getEntryById } = useEntry()
+  const {entry, pending} = useEntry(id)
   const nav = useNavigate()
-  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    if (entry) {
+      const { title, notes, imgSrc } = entry
+      setEntryTitle(title)
+      setEntryNotes(notes)
+      setImgSrc(imgSrc)
+      setPreviewImgSrc(imgSrc)
+    }
+  }, [entry])
 
   // Pre-Populate Form Controls On Mount
-  useEffect(() => {
-    async function getEntry() {
-      const entry = await getEntryById('entries', id)
-      if (entry) {
-        const { title, notes, imgSrc } = entry
-        setEntryTitle(title)
-        setEntryNotes(notes)
-        setImgSrc(imgSrc)
-        setPreviewImgSrc(imgSrc)
-      } else {
-        console.log('invalid entry id')
-      }
-    }
-    getEntry()
-  }, [])
+  // useEffect(() => {
+  //   async function getEntry() {
+  //     const entry = await getEntryById('entries', id)
+  //     if (entry) {
+  //       const { title, notes, imgSrc } = entry
+  //       setEntryTitle(title)
+  //       setEntryNotes(notes)
+  //       setImgSrc(imgSrc)
+  //       setPreviewImgSrc(imgSrc)
+  //     } else {
+  //       console.log('invalid entry id')
+  //     }
+  //   }
+  //   getEntry()
+  // }, [])
 
   function loadImg(src) {
     return new Promise((resolve, reject) => {
@@ -167,7 +176,7 @@ export default function EditEntry() {
     <main>
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
-        {user && (
+        {user && entry && (
           <div className="new-entry">
             <header>
               <h1>Edit Entry</h1>
@@ -208,18 +217,26 @@ export default function EditEntry() {
               </label>
               <div className="btns-wrapper col-full">
                 <div className="save-or-cancel">
-                  <button className="btn">SAVE</button>
                   <Link to="/">
                     <button className="btn swap-views-btn">
                       CANCEL
                     </button>
                   </Link>
+                  <button className="btn">SAVE</button>
                 </div>
                 <button className="delete-entry-btn" type="button" onClick={() => setModalActive(true)}>
                   Delete Entry
                 </button>
               </div>
             </form>
+          </div>
+        )}
+        {user && !pending && !entry && (
+          <div className="entry-not-found">
+            <p>entry not found 😭</p>
+            <Link to="/">
+              <button className="btn">Go Home</button>
+            </Link>
           </div>
         )}
       </div>
