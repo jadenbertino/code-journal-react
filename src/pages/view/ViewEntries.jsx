@@ -66,14 +66,14 @@ export default function ViewEntries() {
         {!user && <AuthPrompt />}
         {user && (
           <div className="view-entries">
-            <div className="row header">
+            <header>
               <h1>View Entries</h1>
               <Link to="/create">
-                <button className="btn" id="new-entry-btn">
+                <button className="btn swap-views-btn">
                   NEW ENTRY
                 </button>
               </Link>
-            </div>
+            </header>
             <form className="search" onSubmit={searchEntries}>
               <button className="search-btn">
                 <i className="fa-solid fa-magnifying-glass"></i>

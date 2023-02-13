@@ -1,25 +1,25 @@
-.new-entry .form-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .new-entry form {
   display: flex;
   flex-wrap: wrap;
 }
 
 .new-entry .img-wrapper {
-  margin-top: 16px;
-  height: 250px;
   border-radius: 8px;
   overflow: hidden;
+  height: 348px;
+  margin-right: 12px;
+  width: calc(50% - 12px);
+  margin-bottom: 24px;
+}
+
+.new-entry .text-wrapper {
+  padding-left: 12px;
 }
 
 .new-entry label {
   display: flex;
   flex-direction: column;
-  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 .new-entry span {
@@ -38,7 +38,7 @@
 }
 
 .new-entry textarea {
-  min-height: 120px;
+  min-height: 200px;
   resize: vertical; /* by default can also resize horizontally, this disables it */
 }
 
@@ -48,7 +48,6 @@
 }
 
 .new-entry .btns-wrapper {
-  margin-top: 24px;
   display: flex;
   justify-content: space-between;
   flex-direction: row-reverse;
@@ -60,26 +59,29 @@
 
 /*
 
-    Desktop
+    DESKTOP
 
 */
 
-@media (min-width: 992px) {
+@media (max-width: 992px) {
 
   .new-entry .img-wrapper {
-    height: 348px;
+    height: 280px;
+    width: 100%;
+    margin-right: 0;
   }
 
-  .new-entry .col-half.img-wrapper {
-    margin-right: 12px;
-    width: calc(50% - 12px)
-  }
-
-  .new-entry .col-half.text-wrapper {
-    padding-left: 12px;
+  .new-entry .text-wrapper {
+    padding-left: 0;
   }
 
   .new-entry textarea {
-    min-height: 200px;
+    min-height: 120px;
+  }
+}
+
+@media (max-width: 576px) {
+  header h1 {
+    font-size: 28px;
   }
 }

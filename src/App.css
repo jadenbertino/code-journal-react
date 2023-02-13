@@ -26,17 +26,20 @@ textarea {
 .btn {
   background-color: #562B81;
   color: white;
-  padding: 8px 16px;
+  padding: 12px 24px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
 }
 
+.btn-sm {
+  padding: 8px 16px;
+}
+
 h1 {
   font-size: 36px;
 }
-
 
 img {
   /* all img elems will be in .img-wrapper */
@@ -62,26 +65,133 @@ img {
 }
 
 .container {
-  max-width: 576px;
+  position: relative;
+  max-width: 768px;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding: 0 24px;
 }
 
 .row {
   width: 100%;
-  margin: 24px 0;
+  margin: 40px 0;
 }
 
-.col-full,
-.col-half {
+.col-full {
   width: 100%;
 }
 
-@media screen and (min-width: 992px) {
+.col-half {
+  width: 50%;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 32px 0;
+}
+
+/*
+
+    MODAL
+
+*/
+
+.modal-backdrop {
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 999;
+}
+
+.modal {
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  max-width: 500px;
+  width: calc(100% - 32px); /* 16px padding each side */
+  min-height: 150px;
+  background: #fff;
+  border-radius: 8px;
+}
+
+.modal-content-wrapper {
+  padding: 32px 24px 48px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.modal-content-wrapper a .btn,
+#nav-sign-out-btn {
+  width: 200px;
+}
+
+.modal .exit-modal-btn {
+  position: absolute;
+  top: 12px; right: 24px;
+  background-color: transparent;
+}
+
+.modal .fa-x {
+  font-size: 20px;
+  pointer-events: none;
+  color: #292929;
+}
+
+
+.modal .btns-wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 400px;
+  width: 100%;
+}
+
+.modal .btn {
+  font-size: 16px;
+}
+
+.modal .cancel-delete-btn {
+  background: #b6b6b6;
+  color: #292929
+}
+
+.modal .confirm-delete-btn {
+  background: #DC2626;
+}
+
+.nav-modal .modal-content-wrapper > * {
+  margin: 12px 0;
+}
+
+
+/*
+
+    MOBILE
+
+*/
+
+@media screen and (max-width: 992px) {
   .container {
-    max-width: 768px;
+    max-width: 576px;
+
   }
   .col-half {
-    width: 50%;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header {
+    display: flex;
+    justify-content: center;
+  }
+
+  header .swap-views-btn {
+    display: none;
   }
 }

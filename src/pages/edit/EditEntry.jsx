@@ -167,15 +167,15 @@ export default function EditEntry() {
       <div className={`container vh-100 ${!user ? 'fc' : ''}`}>
         {!user && <AuthPrompt />}
         {user && (
-          <div className="row new-entry" data-view="new-entry">
-            <div className="form-header">
+          <div className="new-entry">
+            <header>
               <h1>Edit Entry</h1>
               <Link to="/">
-                <button className="btn" id="view-entries-btn">
-                  VIEW ENTRIES
+                <button className="btn swap-views-btn">
+                  CANCEL EDITS
                 </button>
               </Link>
-            </div>
+            </header>
             <form id="new-entry-form" onSubmit={handleSubmit}>
               <div className="col-half img-wrapper">
                 <img id="new-entry-img" src={previewImgSrc} alt="placeholder" />
@@ -185,7 +185,6 @@ export default function EditEntry() {
                   <span>Title</span>
                   <input
                     type="text"
-                    name="title"
                     id="new-entry-title"
                     onChange={e => setEntryTitle(e.target.value)}
                     value={entryTitle}
@@ -197,7 +196,6 @@ export default function EditEntry() {
                   <span>Photo URL</span>
                   <input
                     type="text"
-                    name="photoURL"
                     id="new-entry-photoURL"
                     onChange={e => showPreviewImg(e.target.value)}
                     value={imgSrc}
@@ -209,7 +207,6 @@ export default function EditEntry() {
               <label className="col-full">
                 <span>Notes</span>
                 <textarea
-                  name="notes"
                   id="new-entry-notes"
                   onChange={e => setEntryNotes(e.target.value)}
                   className={isValidNotes ? '' : 'invalid-input'}

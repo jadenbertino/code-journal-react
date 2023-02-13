@@ -17,6 +17,13 @@ nav h3 {
 nav .title {
   display: flex;
   align-items: center;
+  padding: 12px;
+  transform: translateX(-12px);
+}
+
+nav .fa-bookmark {
+  font-size: 20px;
+  margin-right: 12px;
 }
 
 nav .title a {
@@ -27,9 +34,50 @@ nav .btn {
   font-size: 16px;
 }
 
-.auth .btn {
+nav .auth .btn {
   background-color: #F0F0F0;
   color: #562B81;
   font-weight: bold;
   margin-left: 32px;
+}
+
+nav .auth .greeting {
+  pointer-events: none;
+}
+
+.mobile-hamburger {
+  display: none;
+}
+
+/*
+
+    MOBILE
+
+*/
+
+@media screen and (max-width: 992px) {
+  nav .title .links-wrapper {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  nav .auth .greeting {
+    display: none;
+  }
+
+  nav .auth {
+    display: none;
+  }
+
+  .mobile-hamburger {
+    display: flex;
+    align-items: center;
+    transform: translateX(12px);
+    padding: 12px !important;
+  }
+
+  .fa-bars {
+    font-size: 24px;
+  }
 }
