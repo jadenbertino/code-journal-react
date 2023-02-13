@@ -71,12 +71,19 @@ form.card {
 }
 
 .entry-not-found {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-top: 32px;
   text-align: center;
 }
 
-.entry-not-found .btn {
-  margin-top: 16px;
+.entry-not-found > * {
+  margin-bottom: 16px;
+}
+
+.entry-not-found .img-wrapper {
+  max-width: 400px;
 }
 
 /*

@@ -233,7 +233,10 @@ export default function EditEntry() {
         )}
         {user && !pending && !entry && (
           <div className="entry-not-found">
-            <p>entry not found 😭</p>
+            <div className="img-wrapper">
+              <img src="/404.gif" alt="" />
+            </div>
+            <h3>Entry Not Found 😭</h3>
             <Link to="/">
               <button className="btn">Go Home</button>
             </Link>
