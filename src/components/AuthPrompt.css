@@ -25,3 +25,26 @@
   font-size: 20px;
   margin: 0 24px;
 }
+
+/*
+
+    MOBILE
+
+*/
+
+@media (max-width: 576px) {
+  .auth-prompt h1 {
+    font-size: 28px;
+    margin: 24px 0; 
+  }
+
+  .auth-prompt .btns-wrapper {
+    flex-direction: column;
+  }
+
+  .auth-prompt .btn {
+    padding: 12px 40px;
+    margin: 0 0 24px 0;
+    width: 100%;
+  }
+}

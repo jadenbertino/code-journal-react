@@ -15,11 +15,9 @@ export default function Nav() {
   return (
     <nav>
       <div className="container">
-        <Link to="/">
-          <div className="title">
-            <i className="fa-sharp fa-solid fa-bookmark"></i>
-            <h3>Code Journal</h3>
-          </div>
+        <Link to="/" className="title">
+          <i className="fa-sharp fa-solid fa-bookmark"></i>
+          <h3>Code Journal</h3>
         </Link>
         <div className="auth">
           {!user && (<>
