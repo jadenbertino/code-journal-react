@@ -15,7 +15,6 @@ export default function ViewEntries() {
   const { user } = useAuthContext();
   const { entries, pending } = useCollection('entries', ['uid', '==', user && user.uid]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [currentSearchQuery, setCurrentSearchQuery] = useState('')
   const searchInput = useRef()
 
   // enter on search => search queries
@@ -26,7 +25,7 @@ export default function ViewEntries() {
 
   function resetQuery() {
     setSearchQuery('')
-    setCurrentSearchQuery('')
+    setSearchQuery('')
   }
 
   return (
@@ -51,8 +50,8 @@ export default function ViewEntries() {
                 type="text"
                 placeholder="Search Entries..."
                 ref={searchInput}
-                onChange={(e) => setCurrentSearchQuery(e.target.value)}
-                value={currentSearchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                value={searchQuery}
               />
             </form>
             {pending && <p className="loading">Loading Entries...</p>}
